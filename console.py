@@ -31,3 +31,24 @@ test_animal_izzy = Animal(
 
 
 # --------
+
+# save three 3 vets
+vet_repository.save(test_vet_peter)
+vet_repository.save(test_vet_mark)
+vet_repository.save(test_vet_paul)
+# save 6 animals
+animal_repository.save(test_animal_pepper)
+animal_repository.save(test_animal_luna)
+animal_repository.save(test_animal_snowy)
+animal_repository.save(test_animal_lola)
+animal_repository.save(test_animal_buster)
+animal_repository.save(test_animal_izzy)
+
+# select all vets and print
+vets = vet_repository.select_all()
+for vet in vets:
+    print(vet.__dict__)
+# select all animals and print
+animals = animal_repository.select_all()
+for animal in animals:
+    print(animal.__dict__)

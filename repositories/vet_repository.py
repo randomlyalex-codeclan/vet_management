@@ -8,8 +8,8 @@ from models.vet import Vet
 
 # C --------v
 def save(vet):
-    sql = "INSERT INTO vets (first_name) VALUES (%s) RETURNING *"
-    values = [vet.first_name]
+    sql = "INSERT INTO vets (name) VALUES (%s) RETURNING *"
+    values = [vet.name]
     results = run_sql(sql, values)
     id = results[0]['id']
     vet.id = id
