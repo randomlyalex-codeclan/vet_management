@@ -76,3 +76,11 @@ class TestAnimal(unittest.TestCase):
         self.test_animal_snowy.add_treatment("Regular Checkup")
         self.test_animal_snowy.clear_treatment_history()
         self.assertEqual("", self.test_animal_snowy.treatments)
+
+    def test_remove_last_treatment(self):
+        self.test_animal_snowy.add_treatment("Clip Claws")
+        self.test_animal_snowy.add_treatment("Worms Tablets")
+        self.test_animal_snowy.add_treatment("Regular Checkup")
+        self.test_animal_snowy.remove_last_treatment()
+        self.assertEqual("Clip Claws, Worms Tablets",
+                         self.test_animal_snowy.treatments)

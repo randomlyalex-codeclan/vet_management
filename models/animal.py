@@ -20,4 +20,6 @@ class Animal():
         self.treatments = ""
 
     def remove_last_treatment(self):
-        pass
+        all_treatments = self.treatments.split(",")
+        del all_treatments[-1]
+        self.treatments = ",".join(all_treatments)
