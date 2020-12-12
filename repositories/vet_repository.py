@@ -44,7 +44,8 @@ def select_id(id):
 
 
 def update(vet):
-    sql = "UPDATE vets SET (name) = (%s) WHERE id = %s"
+    # remember to change this when I add more attributes and columns later
+    sql = "UPDATE vets SET name = %s WHERE id = %s"
     values = [vet.name, vet.id]
     run_sql(sql, values)
 

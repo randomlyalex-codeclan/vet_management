@@ -76,10 +76,16 @@ animals = animal_repository.select_all()
 for animal in animals:
     print(animal.__dict__)
 
-# run add treatment, and then test update function
+# testing selecting changing and updating animals:
 snowy = animal_repository.select_id(3)
 snowy.add_treatment("Clip Claws")
 animal_repository.update(snowy)
+
+# testing selecting changing and updating vets:
+vet = vet_repository.select_id(1)
+vet.name = "Trevor"
+vet_repository.update(vet)
+
 
 print("\n", "\n")
 # select all vets and print
