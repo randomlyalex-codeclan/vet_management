@@ -7,5 +7,3 @@ class Animal():
         self.owner = owner
         self.vet = vet
         id = id
-
-        
