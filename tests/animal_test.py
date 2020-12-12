@@ -50,3 +50,29 @@ class TestAnimal(unittest.TestCase):
         self.assertEqual("Paul", self.test_animal_pepper.vet.name)
         self.assertEqual("Peter", self.test_animal_snowy.vet.name)
         self.assertEqual("Paul", self.test_animal_buster.vet.name)
+
+    def test_add_treatment_to_animal(self):
+        # test no treatment
+        self.assertEqual("", self.test_animal_snowy.treatments)
+        self.test_animal_snowy.add_treatment("Clip Claws")
+        self.assertEqual("Clip Claws", self.test_animal_snowy.treatments)
+
+    def test_add_two_treatments_to_animal_expect_comma(self):
+        self.test_animal_snowy.add_treatment("Clip Claws")
+        self.test_animal_snowy.add_treatment("Worms Tablets")
+        self.assertEqual("Clip Claws, Worms Tablets",
+                         self.test_animal_snowy.treatments)
+
+    def test_add_three_treatments_to_animal_expect_commas(self):
+        self.test_animal_snowy.add_treatment("Clip Claws")
+        self.test_animal_snowy.add_treatment("Worms Tablets")
+        self.test_animal_snowy.add_treatment("Regular Checkup")
+        self.assertEqual("Clip Claws, Worms Tablets, Regular Checkup",
+                         self.test_animal_snowy.treatments)
+
+    def test_clear_treatments(self):
+        self.test_animal_snowy.add_treatment("Clip Claws")
+        self.test_animal_snowy.add_treatment("Worms Tablets")
+        self.test_animal_snowy.add_treatment("Regular Checkup")
+        self.test_animal_snowy.clear_treatment_history()
+        self.assertEqual("", self.test_animal_snowy.treatments)

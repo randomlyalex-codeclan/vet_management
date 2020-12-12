@@ -62,7 +62,7 @@ for animal in animals:
 animal_repository.delete_id(4)
 animal_repository.delete_id(5)
 
-vet_repository.delete_id(1)
+vet_repository.delete_id(3)
 vet_repository.delete_id(2)
 
 
@@ -75,3 +75,6 @@ for vet in vets:
 animals = animal_repository.select_all()
 for animal in animals:
     print(animal.__dict__)
+
+# run add treatment, and then test update function
+
