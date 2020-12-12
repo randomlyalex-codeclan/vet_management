@@ -11,7 +11,7 @@ app.register_blueprint(vets_blueprint)
 
 @app.route("/")
 def main():
-    return render_template('index.html')
+    return render_template('index.html.j2')
 
 
 if __name__ == '__main__':

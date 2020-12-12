@@ -8,4 +8,4 @@ animals_blueprint = Blueprint("animals", __name__)
 
 @animals_blueprint.route("/animals")
 def animals():
-    return render_template("animals/index.html")
+    return render_template("animals/index.html.j2")

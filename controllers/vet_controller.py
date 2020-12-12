@@ -8,4 +8,4 @@ vets_blueprint = Blueprint("vets", __name__)
 
 @vets_blueprint.route("/vets")
 def vets():
-    return render_template("vets/index.html")
+    return render_template("vets/index.html.j2")
