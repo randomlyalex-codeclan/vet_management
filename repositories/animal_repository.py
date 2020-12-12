@@ -65,7 +65,7 @@ def update(animal):
 
 
 def delete_all():
-    sql = "DELETE  FROM animals"
+    sql = "DELETE FROM animals"
     run_sql(sql)
 
 

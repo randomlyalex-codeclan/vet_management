@@ -12,6 +12,6 @@ CREATE TABLE animals (
     species varchar(255),
     owner VARCHAR(255),
     treatments text,
-    vet_id int REFERENCES vets (id)
+    vet_id int REFERENCES vets (id) ON DELETE CASCADE
 );
 

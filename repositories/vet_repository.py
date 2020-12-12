@@ -52,12 +52,12 @@ def update(vet):
 
 
 def delete_all():
-    sql = "DELETE  FROM vets"
+    sql = "DELETE FROM vets CASCADE"
     run_sql(sql)
 
 
 def delete_id(id):
-    sql = "DELETE  FROM vets WHERE id = %s"
+    sql = "DELETE FROM vets WHERE id = %s "
     values = [id]
     run_sql(sql, values)
 
