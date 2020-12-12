@@ -77,4 +77,16 @@ for animal in animals:
     print(animal.__dict__)
 
 # run add treatment, and then test update function
+snowy = animal_repository.select_id(3)
+snowy.add_treatment("Clip Claws")
+animal_repository.update(snowy)
 
+print("\n", "\n")
+# select all vets and print
+vets = vet_repository.select_all()
+for vet in vets:
+    print(vet.__dict__)
+# select all animals and print
+animals = animal_repository.select_all()
+for animal in animals:
+    print(animal.__dict__)

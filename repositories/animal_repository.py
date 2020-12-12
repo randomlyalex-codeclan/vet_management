@@ -40,7 +40,7 @@ def select_all():
 
 def select_id(id):
     animal = None
-    sql = "SELECT * FROM animals (name, dob, species, owner, treatments, vet_id ) WHERE id = %s"
+    sql = "SELECT * FROM animals WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
 
@@ -56,7 +56,7 @@ def select_id(id):
 
 
 def update(animal):
-    sql = "UPDATE animals SET (name, dob, species, owner, treatments, vet_id) = (%s) WHERE id = %s"
+    sql = "UPDATE animals SET (name, dob, species, owner, treatments, vet_id) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [animal.name, animal.dob, animal.species,
               animal.owner, animal.treatments, animal.vet.id, animal.id]
     run_sql(sql, values)
