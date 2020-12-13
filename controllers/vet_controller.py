@@ -8,4 +8,5 @@ vets_blueprint = Blueprint("vets", __name__)
 
 @vets_blueprint.route("/vets")
 def vets():
-    return render_template("vets/index.html.j2")
+    all_vets = vet_repository.select_all()
+    return render_template("vets/index.html.j2", all_vets=all_vets)

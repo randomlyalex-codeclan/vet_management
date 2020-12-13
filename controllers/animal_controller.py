@@ -8,4 +8,5 @@ animals_blueprint = Blueprint("animals", __name__)
 
 @animals_blueprint.route("/animals")
 def animals():
-    return render_template("animals/index.html.j2")
+    all_animals = animal_repository.select_all()
+    return render_template("animals/index.html.j2", all_animals=all_animals)
