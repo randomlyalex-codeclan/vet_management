@@ -1,0 +1,22 @@
+{% extends '/index.html.j2' %}
+{% block content %}
+{% if message != None %}
+{{ message }}
+{% endif %}
+
+SETTINGS PAGE:
+<ul>
+    <form action="/settings" method="POST">
+        <li><button type="submit" name="action" value="delete_all_vets" onclick="return confirm('Are you sure?')">Delete
+                all
+                Vets</button>
+    </form>
+    <form action="/settings" method="POST">
+        <li><button type="submit" name="action" value="delete_all_animals"
+                onclick="return confirm('Are you sure?')">Delete all
+                Animals</button>
+</ul>
+</form>
+
+
+{% endblock content %}

@@ -4,10 +4,14 @@
 {{ message }}
 {% endif %}
 <form action="#" method="POST">
-    <input type="text" name="name" id="" required>
-    <input type="submit" name="action" value="continue" />
-    <input type="submit" name="action" value="finish" />
-    <input type="reset" value="discard" />
+<ul>
+    <li>Name: <input type="text" name="name" required></li>
+    <li>
+    <button type="submit" name="action" value="continue">Save & Add more</button>
+    <button type="submit" name="action" value="finish">Save & Return</button>
+    <button type="reset" value="discard">Reset</button>
+    </li>
+</ul>    
 </form>
 
 {% endblock content %}

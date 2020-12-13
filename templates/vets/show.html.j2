@@ -1,14 +1,17 @@
 {% extends '/index.html.j2' %}
 {% block content %}
-
+{% if message != None %}
+{{ message }}
+{% endif %}
 <ul>
     <li>Name : {{vet.name}}</li>
+    <li>ID : {{vet.id}}</li>
     <a href="/vets/detail/edit/{{vet.id}}">
-    <li><input type="submit" value="edit"></li>
+    <li><button type="submit" value="edit">Edit</button></li>
     </a>
     <form action="/vets/detail/delete/{{vet.id}}" method="POST">
     <input type="hidden" name="id" value="{{vet.id}}"/>
-    <li><input type="submit" value="delete"></li>
+    <li><button type="submit" value="delete" onclick="return confirm('Are you sure?')">Delete</button></li>
     </form>
 </ul>
 {% endblock content %}

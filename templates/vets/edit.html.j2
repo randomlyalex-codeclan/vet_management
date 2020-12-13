@@ -6,7 +6,7 @@
 <form action="/vets/detail/edit/{{vet.id}}" method="POST">
     <input type="text" name="name" value={{vet.name}} required>
     <input type="hidden" name="id" value={{vet.id}}>
-    <input type="submit" name="action" value="save" />
+    <button type="submit" name="action" value="save">Save</button
 </form>
 
 {% endblock content %}

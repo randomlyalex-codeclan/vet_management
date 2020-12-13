@@ -16,10 +16,11 @@ def index():
     if vets == []:
         no_vets = True
         message = "No Vets Found, please add these first."
-    elif request.args.get('animal_id') != None:
-        message = request.args.get(
-            'message')+"Animal id"+request.args.get('animal_id')+request.args.get('action')
-    all_animals = animal_repository.select_all()
+    # elif request.args.get('animal_id') != None:
+    #     message = request.args.get(
+    #         'message')+"Animal id"+request.args.get('animal_id')+request.args.get('action')
+    else:
+        all_animals = animal_repository.select_all()
     # return render_template("animals/index.html.j2", all_animals=all_animals, animal_id=animal_id, message=message, action=action)
     return render_template("animals/index.html.j2", **locals())
 
@@ -51,7 +52,32 @@ def new():
         print("POST Error 405 Method Not Allowed")
 
 
-@ animals_blueprint.route("/animals/detail/<id>")
-def detail(id):
-
-    return render_template("animals/detail.html.j2")
+@ animals_blueprint.route("/animals/detail/<action>/<id>", methods=["POST", "GET"])
+def detail(action, id):
+    animal = animal_repository.select_id(id)
+    if request.method == 'GET':
+        if action == "show":
+            return render_template("animals/show.html.j2", animal=animal)
+        if action == "edit":
+            vets = vet_repository.select_all()
+            return render_template("animals/edit.html.j2", animal=animal, vets=vets)
+    if request.method == 'POST':
+        if action == "delete":
+            animal_repository.delete_id(request.form['id'])
+            message = f"Animal: {animal.name} (id:{animal.id}) deleted"
+            return redirect(url_for("animals.index", message=message))
+        if action == "edit":
+            name = request.form['name']
+            dob = request.form['dob']
+            species = request.form['species']
+            owner = request.form['owner']
+            vet_id = request.form['vet_id']
+            id = request.form['id']
+            vet = vet_repository.select_id(vet_id)
+            animal = Animal(name, dob, species, owner, vet, id)
+            animal_repository.update(animal)
+            message = f"Animal: {animal.name} (id:{animal.id}) updated"
+            return redirect(url_for("animals.index", message=message))
+        else:
+            message = "Malformed URL"
+            return redirect(url_for("animals.index", message=message))

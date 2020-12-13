@@ -3,20 +3,24 @@
 {% if message != None %}
     {{message}}
 {% endif %}
-<form action="" method="POST">
-    <input type="text" name="name" id="" required>
-    <input type="text" name="dob" id="" required>
-    <input type="text" name="species" id="" required>
-    <input type="text" name="owner" id="" required>
-    <select name="vet_id">
+<form action="#" method="POST">
+<ul>
+    <li>Name: <input type="text" name="name" id="" required></li>
+    <li>DoB: <input type="text" name="dob" id="" required></li>
+    <li>Species: <input type="text" name="species" id="" required></li>
+    <li>Owner details: <input type="text" name="owner" id="" required></li>
+    <li>Vet: <select name="vet_id">
     {% for vet in vets %}
         <option value="{{ vet.id }}">
             {{ vet.name }}
         </option>
     {% endfor %}
-    </select>
-    <input type="submit" name="action" value="continue" />
-    <input type="submit" name="action" value="finish" />
-    <input type="reset" value="discard" />
+    </select></li>
+    <li>
+    <button type="submit" name="action" value="continue">Save & Add more</button>
+    <button type="submit" name="action" value="finish">Save & Return</button>
+    <button type="reset" value="discard">Reset</button>
+    </li>
+</ul>
 </form>
 {% endblock content %}

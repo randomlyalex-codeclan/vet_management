@@ -1,3 +1,19 @@
 {% extends '/index.html.j2' %}
 {% block content %}
+
+<ul>
+    <li>Name : {{animal.name}}</li>
+    <li>dob : {{animal.dob}}</li>
+    <li>species : {{animal.species}}</li>
+    <li>owner : {{animal.owner}}</li>
+    <li>Vet : {{animal.vet.name}}</li>
+    <li>ID : {{animal.id}}</li>
+    <a href="/animals/detail/edit/{{animal.id}}">
+    <li><button type="submit" value="edit">Edit</button></li>
+    </a>
+    <form action="/animals/detail/delete/{{animal.id}}" method="POST">
+    <input type="hidden" name="id" value="{{animal.id}}"/>
+    <li><button type="submit" value="delete" onclick="return confirm('Are you sure?')">Delete</button></li>
+    </form>
+</ul>
 {% endblock content %}

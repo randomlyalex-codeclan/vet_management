@@ -9,8 +9,8 @@ vets_blueprint = Blueprint("vets", __name__)
 @vets_blueprint.route("/vets")
 def index():
     message = request.args.get('message')
-    animal_id = "Animal id"+str(request.args.get('animal_id'))
-    action = request.args.get('action')
+    # animal_id = "Animal id"+str(request.args.get('animal_id'))
+    # action = request.args.get('action')
     all_vets = vet_repository.select_all()
     return render_template("vets/index.html.j2", **locals())
 
