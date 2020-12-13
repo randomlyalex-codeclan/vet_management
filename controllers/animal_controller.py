@@ -12,7 +12,7 @@ def index():
     # something is wrong below im going to bed :)
     no_vets = False
     vets = vet_repository.select_all()
-
+    message = request.args.get('message')
     if vets == []:
         no_vets = True
         message = "No Vets Found, please add these first."
@@ -26,8 +26,8 @@ def index():
 
 @ animals_blueprint.route("/animals/new", methods=["POST", "GET"])
 def new():
+    vets = vet_repository.select_all()
     if request.method == 'GET':
-        vets = vet_repository.select_all()
         return render_template("animals/new.html.j2", vets=vets)
     if request.method == 'POST':
         name = request.form['name']
@@ -45,13 +45,13 @@ def new():
         if request.form['action'] == "finish":
             return redirect(url_for("animals.index", message=message))
         elif request.form['action'] == "continue":
-            return render_template("animals/new.html.j2", message=message)
+            return render_template("animals/new.html.j2", message=message, vets=vets)
     else:
         # POST Error 405 Method Not Allowed
         print("POST Error 405 Method Not Allowed")
 
 
-@ animals_blueprint.route("/show/<id>")
+@ animals_blueprint.route("/animals/detail/<id>")
 def detail(id):
 
-    return render_template("animals/show.html.j2")
+    return render_template("animals/detail.html.j2")

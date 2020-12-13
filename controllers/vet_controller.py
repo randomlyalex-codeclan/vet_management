@@ -39,7 +39,24 @@ def new():
         print("POST Error 405 Method Not Allowed")
 
 
-@ vets_blueprint.route("/show/<id>")
-def detail(id):
+@ vets_blueprint.route("/vets/detail/<action>/<id>", methods=["POST", "GET"])
+def detail(action, id):
     vet = vet_repository.select_id(id)
-    return render_template("vets/show.html.j2", vet=vet)
+    if request.method == 'GET':
+        if action == "show":
+            return render_template("vets/show.html.j2", vet=vet)
+        if action == "edit":
+            return render_template("vets/edit.html.j2", vet=vet)
+    if request.method == 'POST':
+        if action == "delete":
+            vet_repository.delete_id(request.form['id'])
+            message = f"Vet: {vet.name} (id:{vet.id}) deleted"
+            return redirect(url_for("vets.index", message=message))
+        if action == "edit":
+            vet = Vet(request.form['name'], request.form['id'])
+            vet_repository.update(vet)
+            message = f"Vet: {vet.name} (id:{vet.id}) updated"
+            return redirect(url_for("vets.index", message=message))
+        else:
+            message = "Malformed URL"
+            return redirect(url_for("vets.index", message=message))

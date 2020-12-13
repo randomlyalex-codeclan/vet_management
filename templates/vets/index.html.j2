@@ -7,8 +7,9 @@
 
 <ul>
     {% for vet in all_vets %}
-    <li><a href="/vets/{{vet.id}}">{{vet.name}}</a></li>
+    <li><a href="/vets/detail/show/{{vet.id}}">{{vet.name}}</a></li>
     {% endfor %}
-    <li><a href="vets/new">Add New Vet</a></li>
+    <li><a href="/vets/new">Add New Vet</a></li>
 </ul>
 {% endblock content %}
+

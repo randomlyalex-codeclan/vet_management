@@ -3,7 +3,12 @@
 
 <ul>
     <li>Name : {{vet.name}}</li>
-    <li>Edit Record</li>
-    <li>Delete Record</li>
+    <a href="/vets/detail/edit/{{vet.id}}">
+    <li><input type="submit" value="edit"></li>
+    </a>
+    <form action="/vets/detail/delete/{{vet.id}}" method="POST">
+    <input type="hidden" name="id" value="{{vet.id}}"/>
+    <li><input type="submit" value="delete"></li>
+    </form>
 </ul>
 {% endblock content %}
