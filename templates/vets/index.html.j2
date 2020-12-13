@@ -1,6 +1,10 @@
+{% extends '/index.html.j2' %}
+{% block content %}
 Vets Testing 123
 <ul>
     {% for vet in all_vets %}
-    <li>{{vet.name}}</li>
+    <li><a href="/vets/{{vet.id}}">{{vet.name}}</a></li>
     {% endfor %}
+    <li><a href="vets/new">Add New Vet</a></li>
 </ul>
+{% endblock content %}

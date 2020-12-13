@@ -9,7 +9,7 @@ class Animal():
         self.treatments = ""
         self.id = id
 
-# Currently this allows and animal to start with no treatment and then add it in later.
+# Currently the above only allows and animal to start with no treatment and then add it in later.
 # This is also called in the creation of Animal objects from the database
     def add_treatment(self, treatment):
         if self.treatments != "":

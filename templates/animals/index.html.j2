@@ -1,6 +1,15 @@
-Animals Testing 123
+{% extends '/index.html.j2' %}
+{% block content %}
+{% if message != None %}
+    {{message}}
+{% endif %}
+
+{% if no_vets == False %}
 <ul>
     {% for animal in all_animals %}
-    <li>{{animal.name}}</li>
+    <li><a href="/show/{{animal.id}}">{{animal.name}}</a></li>
     {% endfor %}
+    <li><a href="/animals/new">Add New Animal</a></li>
 </ul>
+{% endif %}    
+{% endblock content %}
