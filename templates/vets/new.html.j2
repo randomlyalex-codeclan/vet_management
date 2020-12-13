@@ -1,7 +1,13 @@
 {% extends '/index.html.j2' %}
 {% block content %}
+{% if message != None %}
+{{ message }}
+{% endif %}
 <form action="#" method="POST">
-    <input type="text" name="name" id="">
-    <button type="submit"></button>
+    <input type="text" name="name" id="" required>
+    <input type="submit" name="action" value="continue" />
+    <input type="submit" name="action" value="finish" />
+    <input type="reset" value="discard" />
 </form>
+
 {% endblock content %}

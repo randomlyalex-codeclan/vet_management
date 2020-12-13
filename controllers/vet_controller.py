@@ -7,7 +7,7 @@ vets_blueprint = Blueprint("vets", __name__)
 
 
 @vets_blueprint.route("/vets")
-def vets():
+def index():
     message = request.args.get('message')
     animal_id = "Animal id"+str(request.args.get('animal_id'))
     action = request.args.get('action')
@@ -21,18 +21,25 @@ def new():
         return render_template("vets/new.html.j2")
     if request.method == 'POST':
         name = request.form['name']
-        vet = Vet(name)
-        saved_vet = vet_repository.save(vet)
-        if saved_vet.id != None:
-            message = "Success"
-            vet_id = saved_vet.id
-        return redirect(url_for("vets.vets", message=message, vet_id=vet_id, action="added"))
+        if name != "":
+            vet = Vet(name)
+            saved_vet = vet_repository.save(vet)
+            if saved_vet.id != None:
+                message = f"Success {saved_vet.name} added"
+            else:
+                message = "Failure"
+            if request.form['action'] == "finish":
+                return redirect(url_for("vets.index", message=message))
+            elif request.form['action'] == "continue":
+                return render_template("vets/new.html.j2", message=message)
+        else:
+            return redirect(url_for("vets.index"))
     else:
         # POST Error 405 Method Not Allowed
         print("POST Error 405 Method Not Allowed")
 
 
-@vets_blueprint.route("/show/<id>")
+@ vets_blueprint.route("/show/<id>")
 def detail(id):
-
-    return render_template("vets/show.html.j2")
+    vet = vet_repository.select_id(id)
+    return render_template("vets/show.html.j2", vet=vet)

@@ -8,11 +8,11 @@ animals_blueprint = Blueprint("animals", __name__)
 
 
 @animals_blueprint.route("/animals")
-def animals():
+def index():
     # something is wrong below im going to bed :)
     no_vets = False
     vets = vet_repository.select_all()
-    vet = vets[0]
+
     if vets == []:
         no_vets = True
         message = "No Vets Found, please add these first."
@@ -21,13 +21,14 @@ def animals():
             'message')+"Animal id"+request.args.get('animal_id')+request.args.get('action')
     all_animals = animal_repository.select_all()
     # return render_template("animals/index.html.j2", all_animals=all_animals, animal_id=animal_id, message=message, action=action)
-    return render_template("animals/index.html.j2", vet=vet, **locals())
+    return render_template("animals/index.html.j2", **locals())
 
 
 @ animals_blueprint.route("/animals/new", methods=["POST", "GET"])
 def new():
     if request.method == 'GET':
-        return render_template("animals/new.html.j2")
+        vets = vet_repository.select_all()
+        return render_template("animals/new.html.j2", vets=vets)
     if request.method == 'POST':
         name = request.form['name']
         dob = request.form['dob']
@@ -38,9 +39,13 @@ def new():
         animal = Animal(name, dob, species, owner, vet)
         saved_animal = animal_repository.save(animal)
         if saved_animal.id != None:
-            message = "Success"
-            animal_id = saved_animal.id
-        return redirect(url_for("animals.animals", message=message, animal_id=animal_id, action="added"))
+            message = f"Success {saved_animal.name} added"
+        else:
+            message = "Failure"
+        if request.form['action'] == "finish":
+            return redirect(url_for("animals.index", message=message))
+        elif request.form['action'] == "continue":
+            return render_template("animals/new.html.j2", message=message)
     else:
         # POST Error 405 Method Not Allowed
         print("POST Error 405 Method Not Allowed")

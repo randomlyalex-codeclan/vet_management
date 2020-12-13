@@ -1,6 +1,10 @@
 {% extends '/index.html.j2' %}
 {% block content %}
-Vets Testing 123
+
+{% if message != None %}
+{{message}}
+{% endif %}
+
 <ul>
     {% for vet in all_vets %}
     <li><a href="/vets/{{vet.id}}">{{vet.name}}</a></li>
