@@ -4,12 +4,13 @@
     <section class="left-article-section">
         <form action="/animals/detail/edit/{{animal.id}}" method="POST">
             <ul>
-                <li><span>Name: </span><span><input type="text" name="name" value={{animal.name}} required></span></li>
-                <li><span>Dob: </span><span><input type="text" name="dob" value={{animal.dob}} required></span></li>
-                <li><span>Species: </span><span><input type="text" name="species" value={{animal.species}}
+                <li><span>Name: </span><span><input type="text" name="name" value="{{animal.name}} " required></span>
+                </li>
+                <li><span>Dob: </span><span><input type="text" name="dob" value="{{animal.dob}} " required></span></li>
+                <li><span>Species: </span><span><input type="text" name="species" value="{{animal.species}}"
                             required></span>
                 </li>
-                <li><span>Owner: </span><span><input type="text" name="owner" value={{animal.owner}} required></span>
+                <li><span>Owner: </span><span><input type="text" name="owner" value="{{animal.owner}}" required></span>
                 </li>
                 <li><span>Vet: </span><span><select name="vet_id">
                             {% for vet in vets %}
@@ -19,6 +20,7 @@
                             {% endfor %}
                         </select></li>
                 <input type="hidden" name="id" value={{animal.id}}>
+                <input type="hidden" name="treatments" value="{{animal.treatments}}">
                 <li><span><button type="submit" name="action" value="save"
                             class="bottom-submit-buttons">Save</button></span><span></span></li>
             </ul>

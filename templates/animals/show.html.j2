@@ -7,6 +7,9 @@
             <li><span>dob :</span><span> {{animal.dob}}</span></li>
             <li><span>species :</span><span> {{animal.species}}</span></li>
             <li><span>owner :</span><span> {{animal.owner}}</span></li>
+            <li><span>Treatments :</span><span> <a href="/animals/detail/treatments/{{animal.id}}"> {{len_treatments}}
+                        Treatments
+                    </a></span></li>
             <li><span>Vet :</span><span> {{animal.vet.name}}</span></li>
             <li><span>ID :</span><span> {{animal.id}}</span></li>
             <li><span></span>
@@ -20,11 +23,15 @@
                             <input type="hidden" name="id" value="{{animal.id}}" />
                             <button type="submit" value="delete"
                                 onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
                     </section>
                 </span>
-                </form>
+
         </ul>
     </section>
-    <section></section>
+    <section class="right-article-section">
+        {% block detail %}
+        {% endblock detail %}
+    </section>
 </article>
 {% endblock content %}

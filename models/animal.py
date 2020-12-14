@@ -11,9 +11,12 @@ class Animal():
 
 # Currently the above only allows and animal to start with no treatment and then add it in later.
 # This is also called in the creation of Animal objects from the database
+    def get_treatments(self):
+        return self.treatments.split(",")
+
     def add_treatment(self, treatment):
         if self.treatments != "":
-            treatment = ", " + treatment
+            treatment = "," + treatment
         self.treatments += treatment
 
     def clear_treatment_history(self):

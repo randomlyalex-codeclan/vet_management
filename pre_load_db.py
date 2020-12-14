@@ -27,7 +27,9 @@ test_animal_buster = Animal(
 test_animal_izzy = Animal(
     "Izzy", "30/05/2020", "Cat", "Ali, Manchester", test_vet_mark)
 
-
+# ------- add treatments to two
+test_animal_pepper.treatments = "one,two,three,four"
+test_animal_luna.treatments = "clip claws, something else, worm tablets"
 # --------
 
 # save three 3 vets

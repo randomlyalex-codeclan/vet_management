@@ -57,10 +57,19 @@ def detail(action, id):
     animal = animal_repository.select_id(id)
     if request.method == 'GET':
         if action == "show":
-            return render_template("animals/show.html.j2", animal=animal)
+            len_treatments = len(animal.get_treatments())
+            return render_template("animals/show.html.j2", animal=animal, len_treatments=len_treatments)
         if action == "edit":
             vets = vet_repository.select_all()
             return render_template("animals/edit.html.j2", animal=animal, vets=vets)
+        if action == "treatments":
+            treatments = animal.get_treatments()
+            len_treatments = len(treatments)
+            return render_template("animals/detail.html.j2", animal=animal, len_treatments=len_treatments, treatments=treatments)
+        if action == "treatments_edit":
+            treatments = animal.get_treatments()
+            len_treatments = len(treatments)
+            return render_template("animals/treatments_edit.html.j2", animal=animal, len_treatments=len_treatments, treatments=treatments)
     if request.method == 'POST':
         if action == "delete":
             animal_repository.delete_id(request.form['id'])
@@ -71,13 +80,21 @@ def detail(action, id):
             dob = request.form['dob']
             species = request.form['species']
             owner = request.form['owner']
+            treatments = request.form['treatments']
             vet_id = request.form['vet_id']
             id = request.form['id']
             vet = vet_repository.select_id(vet_id)
             animal = Animal(name, dob, species, owner, vet, id)
+            animal.treatments = treatments
             animal_repository.update(animal)
             message = f"Animal: {animal.name} (id:{animal.id}) updated"
             return redirect(url_for("animals.index", message=message))
+        if action == "treatments_delete_all":
+            animal = animal_repository.select_id(request.form['id'])
+            animal.clear_treatment_history()
+            animal_repository.update(animal)
+            message = f"Animal: {animal.name} (id:{animal.id}) treatments deleted"
+            return redirect(url_for(f"animals.detail", action="show", id=animal.id, message=message))
         else:
             message = "Malformed URL"
             return redirect(url_for("animals.index", message=message))

@@ -48,8 +48,9 @@ def select_id(id):
         vet = vet_repository.select_id(result['vet_id'])
         animal = Animal(result['name'], result['dob'], result['species'],
                         result['owner'], vet, result['id'])
+        animal.treatments = result['treatments']
         # this might later access a treatments table if i have time, and have a treatment history.
-        animal.add_treatment(result['treatments'])
+
     return animal
 
 # U --------v

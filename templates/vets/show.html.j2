@@ -2,21 +2,26 @@
 {% block content %}
 <article>
     <section class="left-article-section">
-    <ul>
-        <li><span>Name :</span> <span>{{vet.name}}</span></li>
-        <li><span>ID : </span><span>{{vet.id}}</span></li>
-        <section class="bottom-submit-buttons">
-            <form action="/vets/detail/edit/{{vet.id}}" method="GET">
-                <input type="hidden" name="id" value="{{vet.id}}" />
-                <button type="submit" value="edit">Edit</button>
-            </form>
-            <form action="/vets/detail/delete/{{vet.id}}" method="POST">
-                <input type="hidden" name="id" value="{{vet.id}}" />
-                <button type="submit" value="delete" onclick="return confirm('Are you sure?')">Delete</button>
-        </section>
+        <ul>
+            <li><span>Name :</span> <span>{{vet.name}}</span></li>
+            <li><span>ID : </span><span>{{vet.id}}</span></li>
+            <li><span></span>
+                <span>
+                    <section class="bottom-submit-buttons">
+                        <form action="/vets/detail/edit/{{vet.id}}" method="GET">
+                            <input type="hidden" name="id" value="{{vet.id}}" />
+                            <button type="submit" value="edit">Edit</button>
+                        </form>
+                        <form action="/vets/detail/delete/{{vet.id}}" method="POST">
+                            <input type="hidden" name="id" value="{{vet.id}}" />
+                            <button type="submit" value="delete"
+                                onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                    </section>
+                </span>
 
-        </form>
-    </ul>
+
+        </ul>
     </section>
     <section class="right-article-section"></section>
 </article>
