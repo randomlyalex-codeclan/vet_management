@@ -2,9 +2,10 @@
 {% block content %}
 <article>
 <form action="/vets/detail/edit/{{vet.id}}" method="POST">
-    <input type="text" name="name" value={{vet.name}} required>
+    <ul><li><input type="text" name="name" value={{vet.name}} required></li>
     <input type="hidden" name="id" value={{vet.id}}>
-    <button type="submit" name="action" value="save">Save</button
+    <li><button type="submit" name="action" value="save">Save</button></li>
+    </ul>
 </form>
 </article>
 {% endblock content %}

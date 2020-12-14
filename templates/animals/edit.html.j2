@@ -2,19 +2,21 @@
 {% block content %}
 <article>
 <form action="/animals/detail/edit/{{animal.id}}" method="POST">
-    <input type="text" name="name" value={{animal.name}} required>
-    <input type="text" name="dob" value={{animal.dob}} required>
-    <input type="text" name="species" value={{animal.species}} required>
-    <input type="text" name="owner" value={{animal.owner}} required>
-    <select name="vet_id">
+    <ul>
+    <li>Name: <input type="text" name="name" value={{animal.name}} required></li>
+    <li>Dob: <input type="text" name="dob" value={{animal.dob}} required></li>
+    <li>Species: <input type="text" name="species" value={{animal.species}} required></li>
+    <li>Owner: <input type="text" name="owner" value={{animal.owner}} required></li>
+    <li>Vet: <select name="vet_id">
     {% for vet in vets %}
         <option value="{{ vet.id }}" {% if vet.id == animal.vet.id %} selected {% endif %}>
             {{ vet.name }}
         </option>
     {% endfor %}
-    </select>
+    </select></li>
     <input type="hidden" name="id" value={{animal.id}}>
-    <button type="submit" name="action" value="save">Save</button>
+    <li><button type="submit" name="action" value="save" class="bottom-submit-buttons">Save</button></li>
+    </ul>
 </form>
 </article>
 {% endblock content %}

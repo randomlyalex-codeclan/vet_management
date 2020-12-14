@@ -1,6 +1,5 @@
 body {
-    
-    
+
 
 }
 
@@ -12,12 +11,13 @@ li {
 /* main container for the whole website */
 body > section {
     display: grid;
-    grid-template-rows: 2fr 8fr 1fr;
+    grid-template-rows: 2fr 7fr 1fr;
 
 }
 
 /* used to flex the title and nav boxes */
 section > header {
+    
     display: flex;
     flex-direction: column;
     background-color: blue;
@@ -25,6 +25,8 @@ section > header {
 
 /* main container for the top title bar */
 header > header {
+    display: flex;
+    justify-content: center;
     background-color: blueviolet;
     width:100%
 }
@@ -66,6 +68,9 @@ section > main {
 
 /* ideally this should be a message bar used for app use feedback */
 main > header {
+    padding: 0;
+    margin:5px;
+    border-radius: 5px;
     display:flex;
     justify-content: center;
     background-color: yellow;
@@ -74,6 +79,9 @@ main > header {
 
 /* this should target the inner most window that grows around the apps use  */
 main > article {
+    padding: 2px;
+    margin:5px;
+    border-radius: 5px;
     display: flex;
     background-color: orange;
     justify-content: center;
