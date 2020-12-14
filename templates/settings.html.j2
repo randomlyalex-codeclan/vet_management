@@ -1,6 +1,8 @@
 {% extends '/index.html.j2' %}
 {% block content %}
 <article>
+    <section class="left-article-section"></section>
+    <section class="right-article-section">
     <ul>
         <form action="/settings" method="POST">
             <li><button type="submit" name="action" value="delete_all_vets"
@@ -14,6 +16,7 @@
                     Animals</button>
     </ul>
     </form>
+    </section>
 </article>
 
 {% endblock content %}
