@@ -1,14 +1,16 @@
 {% extends '/index.html.j2' %}
 {% block content %}
 <article>
-
-{% if no_vets == False %}
-<ul>
-    {% for animal in all_animals %}
-    <li><a href="/animals/detail/show/{{animal.id}}">{{animal.name}}</a></li>
-    {% endfor %}
-    <li><a href="/animals/new"><button>Add New Animal</button></a></li>
-</ul>
-{% endif %}    
+    <section class="left-article-section"></section>
+    <section class="right-article-section">
+        {% if no_vets == False %}
+        <ul>
+            {% for animal in all_animals %}
+            <li><a href="/animals/detail/show/{{animal.id}}">{{animal.name}}</a></li>
+            {% endfor %}
+            <li><a href="/animals/new"><button>Add New Animal</button></a></li>
+        </ul>
+        {% endif %}
+    </section>
 </article>
 {% endblock content %}

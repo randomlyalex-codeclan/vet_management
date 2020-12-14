@@ -1,11 +1,12 @@
 {% extends '/index.html.j2' %}
 {% block content %}
 <article>
-<form action="/vets/detail/edit/{{vet.id}}" method="POST">
-    <ul><li><input type="text" name="name" value={{vet.name}} required></li>
-    <input type="hidden" name="id" value={{vet.id}}>
-    <li><button type="submit" name="action" value="save">Save</button></li>
-    </ul>
-</form>
+    <form action="/vets/detail/edit/{{vet.id}}" method="POST">
+        <ul>
+            <li><span>Name: </span><span><input type="text" name="name" value={{vet.name}} required></span></li>
+            <input type="hidden" name="id" value={{vet.id}}>
+            <li><span><span><button type="submit" name="action" value="save">Save</button></span></li>
+        </ul>
+    </form>
 </article>
 {% endblock content %}

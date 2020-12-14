@@ -1,16 +1,20 @@
 {% extends '/index.html.j2' %}
 {% block content %}
 <article>
-<form action="#" method="POST">
-<ul>
-    <li>Name: <input type="text" name="name" required></li>
-    <li>
-    <button type="submit" name="action" value="continue">Save & Add more</button>
-    <button type="submit" name="action" value="finish">Save & Return</button>
-    <button type="reset" value="discard">Reset</button>
-    </li>
-</ul>    
-</form>
+    <section class="left-article-section"></section>
+    <section class="right-article-section">
+        <form action="#" method="POST">
+            <ul>
+                <li><span>Name: </span><span><input type="text" name="name" required></span></li>
+                <li><span>
+                        <button type="submit" name="action" value="continue">Save & Add more</button>
+                        <button type="submit" name="action" value="finish">Save & Return</button>
+                    </span>
+                    <span><button type="reset" value="discard">Reset</button></span>
+                </li>
+            </ul>
+        </form>
+    </section>
 </article>
 
 {% endblock content %}

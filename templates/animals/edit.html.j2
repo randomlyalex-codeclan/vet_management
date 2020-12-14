@@ -1,22 +1,29 @@
 {% extends '/index.html.j2' %}
 {% block content %}
 <article>
-<form action="/animals/detail/edit/{{animal.id}}" method="POST">
-    <ul>
-    <li>Name: <input type="text" name="name" value={{animal.name}} required></li>
-    <li>Dob: <input type="text" name="dob" value={{animal.dob}} required></li>
-    <li>Species: <input type="text" name="species" value={{animal.species}} required></li>
-    <li>Owner: <input type="text" name="owner" value={{animal.owner}} required></li>
-    <li>Vet: <select name="vet_id">
-    {% for vet in vets %}
-        <option value="{{ vet.id }}" {% if vet.id == animal.vet.id %} selected {% endif %}>
-            {{ vet.name }}
-        </option>
-    {% endfor %}
-    </select></li>
-    <input type="hidden" name="id" value={{animal.id}}>
-    <li><button type="submit" name="action" value="save" class="bottom-submit-buttons">Save</button></li>
-    </ul>
-</form>
+    <section class="left-article-section">
+        <form action="/animals/detail/edit/{{animal.id}}" method="POST">
+            <ul>
+                <li><span>Name: </span><span><input type="text" name="name" value={{animal.name}} required></span></li>
+                <li><span>Dob: </span><span><input type="text" name="dob" value={{animal.dob}} required></span></li>
+                <li><span>Species: </span><span><input type="text" name="species" value={{animal.species}}
+                            required></span>
+                </li>
+                <li><span>Owner: </span><span><input type="text" name="owner" value={{animal.owner}} required></span>
+                </li>
+                <li><span>Vet: </span><span><select name="vet_id">
+                            {% for vet in vets %}
+                            <option value="{{ vet.id }}" {% if vet.id == animal.vet.id %} selected {% endif %}>
+                                {{ vet.name }}
+                            </option>
+                            {% endfor %}
+                        </select></li>
+                <input type="hidden" name="id" value={{animal.id}}>
+                <li><span><button type="submit" name="action" value="save"
+                            class="bottom-submit-buttons">Save</button></span><span></span></li>
+            </ul>
+        </form>
+    </section>
+    <section class="right-article-section"></section>
 </article>
 {% endblock content %}

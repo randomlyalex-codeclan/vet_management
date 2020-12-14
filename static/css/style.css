@@ -1,13 +1,32 @@
-body {
+/* CSS HEX PALETTE */
+/* https://coolors.co/160f29-246a73-368f8b-f3dfc1-ddbea8 */
+/* --dark-purple: #160f29ff;
+--ming: #246a73ff;
+--dark-cyan: #368f8bff;
+--champagne: #f3dfc1ff;
+--desert-sand: #ddbea8ff; */
 
+
+body {
+    font-family:Arial, Helvetica, sans-serif
 
 }
 
 /* disable bullets on lists site wide */
 li {
-    list-style:none
+    list-style:none;
+    white-space: nowrap;
 }
 
+a {
+    color: #160f29ff;
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(22, 15, 41);
+    
+}
 /* main container for the whole website */
 body > section {
     display: grid;
@@ -17,17 +36,17 @@ body > section {
 
 /* used to flex the title and nav boxes */
 section > header {
-    
+    padding:5px;
     display: flex;
     flex-direction: column;
-    background-color: blue;
+    background-color: #f3dfc1ff;
 }
 
 /* main container for the top title bar */
 header > header {
     display: flex;
     justify-content: center;
-    background-color: blueviolet;
+    background-color: #f3dfc1ff;
     width:100%
 }
 
@@ -49,15 +68,30 @@ nav > ul {
 
 /* addressing the nav list for styles */
 nav > ul > li {
-
+    background-color: #368f8bff;
+    padding:7px;
+    border-radius: 5px;
+}
+nav > ul > li  > a{
+    color: white;
+    text-decoration: none;
 }
 
 /* this should target the main central website container */
 section > main {
-    background-color: rgb(0, 60, 0);
+    background-color: #ddbea8ff;
     width: 100%;
     height: 
 
+}
+
+
+form > ul > li {
+    width: 250px
+}
+
+form > ul > li > input {
+    width: 100px
 }
 
 /* this should target the page footer container which i dont have a use for yet */
@@ -73,25 +107,42 @@ main > header {
     border-radius: 5px;
     display:flex;
     justify-content: center;
-    background-color: yellow;
+    background-color: #368f8bff;
 
 }
 
-/* this should target the inner most window that grows around the apps use  */
+/* this should target the inner most window that 
+grows around the apps use also splits into two left and right sections  */
 main > article {
     padding: 2px;
     margin:5px;
     border-radius: 5px;
-    display: flex;
-    background-color: orange;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    background-color:#f3dfc1ff;
     justify-content: center;
 
 }
 
 main > article > ul {
-    padding:0
+    padding:0;
+
+    
+    /* align-self: end; */
 
 }
+/* most lists with the main article should line up the labels */
+main > article > ul > li, form > ul >li {
+    display: grid;
+    grid-template-columns: 5em 5em;;
+}
+
+/* most forms within the main article should line up their boxes and not labels */
+/* form > ul {
+    /* display: inline-block;
+    width: 140px; */
+    /* text-align: right; */
+/* } */ 
 
 .bottom-submit-buttons {
     display:flex

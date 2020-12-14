@@ -1,24 +1,30 @@
 {% extends '/index.html.j2' %}
 {% block content %}
 <article>
-<ul>
-    <li>Name : {{animal.name}}</li>
-    <li>dob : {{animal.dob}}</li>
-    <li>species : {{animal.species}}</li>
-    <li>owner : {{animal.owner}}</li>
-    <li>Vet : {{animal.vet.name}}</li>
-    <li>ID : {{animal.id}}</li>
-    <li>
-    <section class="bottom-submit-buttons">
-    <form action="/animals/detail/edit/{{animal.id}}" method="GET">
-    <input type="hidden" name="id" value="{{animal.id}}"/>
-    <button type="submit" value="edit">Edit</button>
-    </form>
-    <form action="/animals/detail/delete/{{animal.id}}" method="POST">
-    <input type="hidden" name="id" value="{{animal.id}}"/>
-    <button type="submit" value="delete" onclick="return confirm('Are you sure?')">Delete</button>
+    <section class="left-article-section">
+        <ul>
+            <li><span>Name :</span><span> {{animal.name}}</span></li>
+            <li><span>dob :</span><span> {{animal.dob}}</span></li>
+            <li><span>species :</span><span> {{animal.species}}</span></li>
+            <li><span>owner :</span><span> {{animal.owner}}</span></li>
+            <li><span>Vet :</span><span> {{animal.vet.name}}</span></li>
+            <li><span>ID :</span><span> {{animal.id}}</span></li>
+            <li><span></span>
+                <span>
+                    <section class="bottom-submit-buttons">
+                        <form action="/animals/detail/edit/{{animal.id}}" method="GET">
+                            <input type="hidden" name="id" value="{{animal.id}}" />
+                            <button type="submit" value="edit">Edit</button>
+                        </form>
+                        <form action="/animals/detail/delete/{{animal.id}}" method="POST">
+                            <input type="hidden" name="id" value="{{animal.id}}" />
+                            <button type="submit" value="delete"
+                                onclick="return confirm('Are you sure?')">Delete</button>
+                    </section>
+                </span>
+                </form>
+        </ul>
     </section>
-    </form>
-</ul>
+    <section></section>
 </article>
 {% endblock content %}
