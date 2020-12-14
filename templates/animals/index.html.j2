@@ -1,8 +1,6 @@
 {% extends '/index.html.j2' %}
 {% block content %}
-{% if message != None %}
-    {{message}}
-{% endif %}
+<article>
 
 {% if no_vets == False %}
 <ul>
@@ -12,4 +10,5 @@
     <li><a href="/animals/new"><button>Add New Animal</button></a></li>
 </ul>
 {% endif %}    
+</article>
 {% endblock content %}

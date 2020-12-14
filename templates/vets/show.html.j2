@@ -1,17 +1,20 @@
 {% extends '/index.html.j2' %}
 {% block content %}
-{% if message != None %}
-{{ message }}
-{% endif %}
+<article>
 <ul>
     <li>Name : {{vet.name}}</li>
     <li>ID : {{vet.id}}</li>
-    <a href="/vets/detail/edit/{{vet.id}}">
-    <li><button type="submit" value="edit">Edit</button></li>
-    </a>
+    <section class="bottom-submit-buttons">
+    <form action="/vets/detail/edit/{{vet.id}}" method="GET">
+    <input type="hidden" name="id" value="{{vet.id}}"/>
+    <button type="submit" value="edit">Edit</button>
+    </form>
     <form action="/vets/detail/delete/{{vet.id}}" method="POST">
     <input type="hidden" name="id" value="{{vet.id}}"/>
-    <li><button type="submit" value="delete" onclick="return confirm('Are you sure?')">Delete</button></li>
+    <button type="submit" value="delete" onclick="return confirm('Are you sure?')">Delete</button>
+    </section>
+
     </form>
 </ul>
+</article>
 {% endblock content %}

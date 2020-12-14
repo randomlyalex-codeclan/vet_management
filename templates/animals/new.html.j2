@@ -1,8 +1,6 @@
 {% extends '/index.html.j2' %}
 {% block content %}
-{% if message != None %}
-    {{message}}
-{% endif %}
+<article>
 <form action="#" method="POST">
 <ul>
     <li>Name: <input type="text" name="name" id="" required></li>
@@ -23,4 +21,5 @@
     </li>
 </ul>
 </form>
+</article>
 {% endblock content %}

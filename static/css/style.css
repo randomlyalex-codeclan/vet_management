@@ -1,0 +1,91 @@
+body {
+    
+    
+
+}
+
+/* disable bullets on lists site wide */
+li {
+    list-style:none
+}
+
+/* main container for the whole website */
+body > section {
+    display: grid;
+    grid-template-rows: 2fr 8fr 1fr;
+
+}
+
+/* used to flex the title and nav boxes */
+section > header {
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+}
+
+/* main container for the top title bar */
+header > header {
+    background-color: blueviolet;
+    width:100%
+}
+
+/* main container for the nav items */
+header > nav {
+
+    width:100%;
+
+}
+
+/* flex for the nav list */
+nav > ul {
+    padding:0;
+    display:flex;
+    justify-content: space-around;
+    flex-basis: content;
+    flex-wrap: nowrap;
+}
+
+/* addressing the nav list for styles */
+nav > ul > li {
+
+}
+
+/* this should target the main central website container */
+section > main {
+    background-color: rgb(0, 60, 0);
+    width: 100%;
+    height: 
+
+}
+
+/* this should target the page footer container which i dont have a use for yet */
+section > main {
+
+}
+
+
+/* ideally this should be a message bar used for app use feedback */
+main > header {
+    display:flex;
+    justify-content: center;
+    background-color: yellow;
+
+}
+
+/* this should target the inner most window that grows around the apps use  */
+main > article {
+    display: flex;
+    background-color: orange;
+    justify-content: center;
+
+}
+
+main > article > ul {
+    padding:0
+
+}
+
+.bottom-submit-buttons {
+    display:flex
+
+}

@@ -1,6 +1,6 @@
 {% extends '/index.html.j2' %}
 {% block content %}
-
+<article>
 <ul>
     <li>Name : {{animal.name}}</li>
     <li>dob : {{animal.dob}}</li>
@@ -8,12 +8,17 @@
     <li>owner : {{animal.owner}}</li>
     <li>Vet : {{animal.vet.name}}</li>
     <li>ID : {{animal.id}}</li>
-    <a href="/animals/detail/edit/{{animal.id}}">
-    <li><button type="submit" value="edit">Edit</button></li>
-    </a>
+    <li>
+    <section class="bottom-submit-buttons">
+    <form action="/animals/detail/edit/{{animal.id}}" method="GET">
+    <input type="hidden" name="id" value="{{animal.id}}"/>
+    <button type="submit" value="edit">Edit</button>
+    </form>
     <form action="/animals/detail/delete/{{animal.id}}" method="POST">
     <input type="hidden" name="id" value="{{animal.id}}"/>
-    <li><button type="submit" value="delete" onclick="return confirm('Are you sure?')">Delete</button></li>
+    <button type="submit" value="delete" onclick="return confirm('Are you sure?')">Delete</button>
+    </section>
     </form>
 </ul>
+</article>
 {% endblock content %}

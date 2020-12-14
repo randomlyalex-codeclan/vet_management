@@ -1,15 +1,12 @@
 {% extends '/index.html.j2' %}
 {% block content %}
-
-{% if message != None %}
-{{message}}
-{% endif %}
-
+<article>
 <ul>
     {% for vet in all_vets %}
     <li><a href="/vets/detail/show/{{vet.id}}">{{vet.name}}</a></li>
     {% endfor %}
     <li><a href="/vets/new"><button>Add New Vet</button></a></li>
 </ul>
+</article>
 {% endblock content %}
 
