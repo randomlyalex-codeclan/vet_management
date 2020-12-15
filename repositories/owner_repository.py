@@ -53,7 +53,7 @@ def select_id(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        owner = Owner(result['name'], row['address'],
+        owner = Owner(result['name'], result['address'],
                       result['deactivated'], result['id'])
     return owner
 

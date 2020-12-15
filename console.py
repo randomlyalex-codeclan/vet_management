@@ -67,6 +67,12 @@ animal_repository.save(test_animal_apollo)
 vets = vet_repository.select_all()
 for vet in vets:
     print(vet.__dict__)
+
+# select all owners and print
+owners = owner_repository.select_all()
+for owner in owners:
+    print(owner.__dict__)
+
 # select all animals and print
 animals = animal_repository.select_all()
 for animal in animals:
