@@ -3,6 +3,8 @@ from models.animal import Animal
 from models.vet import Vet
 import repositories.animal_repository as animal_repository
 import repositories.vet_repository as vet_repository
+import repositories.owner_repository as owner_repository
+import repositories.treatment_repository as treatment_repository
 
 animals_blueprint = Blueprint("animals", __name__)
 
@@ -11,16 +13,16 @@ animals_blueprint = Blueprint("animals", __name__)
 def index():
     # something is wrong below im going to bed :)
     no_vets = False
-    vets = vet_repository.select_all()
     message = request.args.get('message')
-    if vets == []:
+    show_all = request.args.get('show_all')
+    if vet_repository.select_all() == []:
         no_vets = True
         message = "No Vets Found, please add these first."
-    # elif request.args.get('animal_id') != None:
-    #     message = request.args.get(
-    #         'message')+"Animal id"+request.args.get('animal_id')+request.args.get('action')
-    else:
+        # figure out how to pass a param here i can check for
+    elif show_all == "True":
         all_animals = animal_repository.select_all()
+    else:
+        all_animals = animal_repository.select_all_active()
     # return render_template("animals/index.html.j2", all_animals=all_animals, animal_id=animal_id, message=message, action=action)
     return render_template("animals/index.html.j2", **locals())
 
@@ -57,7 +59,8 @@ def detail(action, id):
     animal = animal_repository.select_id(id)
     if request.method == 'GET':
         if action == "show":
-            len_treatments = len(animal.get_treatments())
+            len_treatments = len(
+                treatment_repository.select_all_by_animal_id(id))
             return render_template("animals/show.html.j2", animal=animal, len_treatments=len_treatments)
         if action == "edit":
             vets = vet_repository.select_all()
@@ -79,13 +82,16 @@ def detail(action, id):
             name = request.form['name']
             dob = request.form['dob']
             species = request.form['species']
-            owner = request.form['owner']
-            treatments = request.form['treatments']
+            owner_id = request.form['owner_id']
             vet_id = request.form['vet_id']
             id = request.form['id']
+            try:
+                deactivated = request.form['deactivated']
+            except:
+                deactivated = False
             vet = vet_repository.select_id(vet_id)
-            animal = Animal(name, dob, species, owner, vet, id)
-            animal.treatments = treatments
+            owner = owner_repository.select_id(owner_id)
+            animal = Animal(name, dob, species, owner, vet, deactivated, id)
             animal_repository.update(animal)
             message = f"Animal: {animal.name} (id:{animal.id}) updated"
             return redirect(url_for("animals.index", message=message))

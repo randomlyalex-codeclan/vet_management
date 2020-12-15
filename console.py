@@ -39,6 +39,10 @@ test_animal_buster = Animal(
 test_animal_izzy = Animal(
     "Izzy", "30/05/2020", "Cat", test_owner_sarah, test_vet_mark, False)
 
+test_treat_clipclaw = Treatment(1, 1, "15/06/2020", "Clipped claws", 5)
+test_treat_wormtabs = Treatment(1, 1, "01/02/2020", "Given worming tablets", 4)
+test_treat_checkup = Treatment(1, 1, "29/12/2019", "regular checkup", 3)
+test_treat_scan = Treatment(2, 1, "15/11/2019", "MRI scan", 10)
 
 # --------
 
@@ -62,6 +66,11 @@ animal_repository.save(test_animal_izzy)
 animal_repository.save(test_animal_buddy)
 animal_repository.save(test_animal_apollo)
 
+# create some treatments
+treatment_repository.save(test_treat_clipclaw)
+treatment_repository.save(test_treat_wormtabs)
+treatment_repository.save(test_treat_checkup)
+treatment_repository.save(test_treat_scan)
 
 # select all vets and print
 vets = vet_repository.select_all()
@@ -77,6 +86,11 @@ for owner in owners:
 animals = animal_repository.select_all()
 for animal in animals:
     print(animal.__dict__)
+
+# select all animals and print
+treatments = treatment_repository.select_all()
+for treatment in treatments:
+    print(treatment.__dict__)
 
 # # # test delete_all animals
 # # animal_repository.delete_all()

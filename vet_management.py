@@ -2,8 +2,10 @@ from flask import Flask, render_template, request, redirect
 
 from controllers.animal_controller import animals_blueprint
 from controllers.vet_controller import vets_blueprint
+from controllers.owner_controller import owner_blueprint
 import repositories.vet_repository as vet_repository
 import repositories.animal_repository as animal_repository
+import repositories.owner_repository as owner_repository
 
 app = Flask(__name__)
 
