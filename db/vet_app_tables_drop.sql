@@ -1,8 +1,15 @@
-DROP TABLE IF EXISTS vets, animals CASCADE;
+DROP TABLE IF EXISTS vets, owners, treatments CASCADE;
 
 CREATE TABLE vets (
     id serial PRIMARY KEY,
     name varchar(255),
+    deactivated bool
+);
+
+CREATE TABLE owners (
+    id serial PRIMARY KEY,
+    name varchar(255),
+    address varchar(255),
     deactivated bool
 );
 
@@ -11,15 +18,8 @@ CREATE TABLE animals (
     name varchar(255),
     dob varchar(255),
     species varchar(255),
-    owner INT REFERENCES owners (id),
+    owner INT REFERENCES owners (id) ON DELETE CASCADE,
     vet_id int REFERENCES vets (id) ON DELETE CASCADE,
-    deactivated bool
-);
-
-CREATE TABLE owners (
-    id serial PRIMARY KEY,
-    name varchar(255),
-    address varchar(255),
     deactivated bool
 );
 
