@@ -9,9 +9,13 @@ vets_blueprint = Blueprint("vets", __name__)
 @vets_blueprint.route("/vets")
 def index():
     message = request.args.get('message')
+    show_all = request.args.get('show_all')
     # animal_id = "Animal id"+str(request.args.get('animal_id'))
     # action = request.args.get('action')
-    all_vets = vet_repository.select_all()
+    if show_all == "True":
+        all_vets = vet_repository.select_all()
+    else:
+        all_vets = vet_repository.select_all_active()
     return render_template("vets/index.html.j2", **locals())
 
 
@@ -53,7 +57,12 @@ def detail(action, id):
             message = f"Vet: {vet.name} (id:{vet.id}) deleted"
             return redirect(url_for("vets.index", message=message))
         if action == "edit":
-            vet = Vet(request.form['name'], request.form['id'])
+            name = request.form['name']
+            try:
+                deactivated = request.form['deactivated']
+            except:
+                deactivated = False
+            vet = Vet(name, deactivated, id)
             vet_repository.update(vet)
             message = f"Vet: {vet.name} (id:{vet.id}) updated"
             return redirect(url_for("vets.index", message=message))

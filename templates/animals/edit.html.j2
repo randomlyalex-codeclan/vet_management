@@ -23,7 +23,8 @@
                         </select></li>
                 <li><span>Deactivate ? </span>
                     <span><input type="checkbox" name="deactivated" value="True" {% if animal.deactivated == True %}
-                            checked {% endif %}></span> </li> <input type="hidden" name="id" value={{animal.id}}>
+                            checked {% endif %}></span> </li>
+                <input type="hidden" name="id" value={{animal.id}}>
                 <input type="hidden" name="owner_id" value={{animal.owner.id}}>
                 <li><span><button type="submit" name="action" value="save"
                             class="bottom-submit-buttons">Save</button></span><span></span></li>
