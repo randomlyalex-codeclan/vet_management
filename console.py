@@ -59,8 +59,8 @@ animal_repository.save(test_animal_snowy)
 animal_repository.save(test_animal_lola)
 animal_repository.save(test_animal_buster)
 animal_repository.save(test_animal_izzy)
-animal_repository.save(test_animal_mikka)
 animal_repository.save(test_animal_buddy)
+animal_repository.save(test_animal_apollo)
 
 
 # select all vets and print
@@ -72,45 +72,45 @@ animals = animal_repository.select_all()
 for animal in animals:
     print(animal.__dict__)
 
-# # test delete_all animals
-# animal_repository.delete_all()
-# # test delete_all vets
-# vet_repository.delete_all()
+# # # test delete_all animals
+# # animal_repository.delete_all()
+# # # test delete_all vets
+# # vet_repository.delete_all()
 
-# test delete by id some values
-animal_repository.delete_id(4)
-animal_repository.delete_id(5)
+# # test delete by id some values
+# animal_repository.delete_id(4)
+# animal_repository.delete_id(5)
 
-vet_repository.delete_id(3)
-vet_repository.delete_id(2)
-
-
-print("\n", "\n")
-# select all vets and print
-vets = vet_repository.select_all()
-for vet in vets:
-    print(vet.__dict__)
-# select all animals and print
-animals = animal_repository.select_all()
-for animal in animals:
-    print(animal.__dict__)
-
-# testing selecting changing and updating animals:
-snowy = animal_repository.select_id(3)
+# vet_repository.delete_id(3)
+# vet_repository.delete_id(2)
 
 
-# testing selecting changing and updating vets:
-vet = vet_repository.select_id(1)
-vet.name = "Trevor"
-vet_repository.update(vet)
+# print("\n", "\n")
+# # select all vets and print
+# vets = vet_repository.select_all()
+# for vet in vets:
+#     print(vet.__dict__)
+# # select all animals and print
+# animals = animal_repository.select_all()
+# for animal in animals:
+#     print(animal.__dict__)
+
+# # testing selecting changing and updating animals:
+# snowy = animal_repository.select_id(3)
 
 
-print("\n", "\n")
-# select all vets and print
-vets = vet_repository.select_all()
-for vet in vets:
-    print(vet.__dict__)
-# select all animals and print
-animals = animal_repository.select_all()
-for animal in animals:
-    print(animal.__dict__)
+# # testing selecting changing and updating vets:
+# vet = vet_repository.select_id(1)
+# vet.name = "Trevor"
+# vet_repository.update(vet)
+
+
+# print("\n", "\n")
+# # select all vets and print
+# vets = vet_repository.select_all()
+# for vet in vets:
+#     print(vet.__dict__)
+# # select all animals and print
+# animals = animal_repository.select_all()
+# for animal in animals:
+#     print(animal.__dict__)

@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS vets, owners, treatments CASCADE;
+DROP TABLE IF EXISTS vets, owners, animals, treatments CASCADE;
 
 CREATE TABLE vets (
     id serial PRIMARY KEY,
