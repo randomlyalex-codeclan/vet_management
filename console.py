@@ -78,10 +78,7 @@ for animal in animals:
 
 # testing selecting changing and updating animals:
 snowy = animal_repository.select_id(3)
-snowy.add_treatment("Clip Claws")
-snowy.add_treatment("Worms Tablets")
-snowy.add_treatment("Regular Checkup")
-animal_repository.update(snowy)
+
 
 # testing selecting changing and updating vets:
 vet = vet_repository.select_id(1)

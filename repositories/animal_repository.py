@@ -4,6 +4,7 @@ from models.vet import Vet
 from models.animal import Animal
 
 import repositories.vet_repository as vet_repository
+import repositories.owner_repository as owner_repository
 
 
 # Basic CRUD here first, inc 1 to many between animal -> vets
@@ -11,9 +12,9 @@ import repositories.vet_repository as vet_repository
 
 # C --------v
 def save(animal):
-    sql = "INSERT INTO animals (name, dob, species, owner, treatments, vet_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
+    sql = "INSERT INTO animals (name, dob, species, owner, vet_id, deactivated) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
     values = [animal.name, animal.dob, animal.species,
-              animal.owner, animal.treatments, animal.vet.id]
+              animal.owner.id, animal.vet.id, animal.deactivated]
     results = run_sql(sql, values)
     id = results[0]['id']
     animal.id = id
@@ -30,10 +31,9 @@ def select_all():
 
     for row in results:
         vet = vet_repository.select_id(row['vet_id'])
+        owner = owner_repository.select_id(row['owner'])
         animal = Animal(row['name'], row['dob'], row['species'],
-                        row['owner'], vet, row['id'])
-        # this might later access a treatments table if i have time, and have a treatment history.
-        animal.treatments = row['treatments']
+                        owner, vet, row['deactivated'], row['id'])
         animals.append(animal)
     return animals
 
@@ -46,10 +46,9 @@ def select_id(id):
 
     if result is not None:
         vet = vet_repository.select_id(result['vet_id'])
+        owner = owner_repository.select_id(result['owner'])
         animal = Animal(result['name'], result['dob'], result['species'],
-                        result['owner'], vet, result['id'])
-        animal.treatments = result['treatments']
-        # this might later access a treatments table if i have time, and have a treatment history.
+                        owner, vet, result['deactivated'], result['id'])
 
     return animal
 
@@ -57,9 +56,9 @@ def select_id(id):
 
 
 def update(animal):
-    sql = "UPDATE animals SET (name, dob, species, owner, treatments, vet_id) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE animals SET (name, dob, species, owner, vet_id, deactivated) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [animal.name, animal.dob, animal.species,
-              animal.owner, animal.treatments, animal.vet.id, animal.id]
+              animal.owner.id, animal.vet.id, animal.deactivated, animal.id]
     run_sql(sql, values)
 
 # D --------v
@@ -68,6 +67,12 @@ def update(animal):
 def delete_all():
     sql = "DELETE FROM animals"
     run_sql(sql)
+
+
+def delete_all_deactivated(deactivated=True):
+    sql = "DELETE FROM animals WHERE deactivated = %s CASCADE"
+    values = [deactivated]
+    run_sql(sql, values)
 
 
 def delete_id(id):

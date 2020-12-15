@@ -8,8 +8,8 @@ from models.vet import Vet
 
 # C --------v
 def save(vet):
-    sql = "INSERT INTO vets (name) VALUES (%s) RETURNING *"
-    values = [vet.name]
+    sql = "INSERT INTO vets (name, deactivated) VALUES (%s, %s) RETURNING *"
+    values = [vet.name, vet.deactivated]
     results = run_sql(sql, values)
     id = results[0]['id']
     vet.id = id
@@ -25,7 +25,21 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        vet = Vet(row['name'], row['id'])
+        vet = Vet(row['name'], row['deactivated'], row['id'])
+        vets.append(vet)
+    return vets
+
+# the function assumes looking for active, unless overridden
+
+
+def select_all_active(deactivated=False):
+    vets = []
+    sql = "SELECT * FROM vets WHERE deactivated = %s"
+    values = [deactivated]
+    results = run_sql(sql, values)
+
+    for row in results:
+        vet = Vet(row['name'], row['deactivated'], row['id'])
         vets.append(vet)
     return vets
 
@@ -37,7 +51,7 @@ def select_id(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        vet = Vet(result['name'], result['id'])
+        vet = Vet(result['name'], result['deactivated'], result['id'])
     return vet
 
 # U --------v
@@ -45,8 +59,8 @@ def select_id(id):
 
 def update(vet):
     # remember to change this when I add more attributes and columns later
-    sql = "UPDATE vets SET name = %s WHERE id = %s"
-    values = [vet.name, vet.id]
+    sql = "UPDATE vets SET (name, deactivated) = (%s, %s) WHERE id = %s"
+    values = [vet.name, vet.deactivated, vet.id]
     run_sql(sql, values)
 
 # D --------v
@@ -54,6 +68,11 @@ def update(vet):
 
 def delete_all():
     sql = "DELETE FROM vets CASCADE"
+    run_sql(sql)
+
+
+def delete_all_deactivated():
+    sql = "DELETE FROM vets WHERE deactivated = True CASCADE"
     run_sql(sql)
 
 
