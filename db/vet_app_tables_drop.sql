@@ -15,3 +15,11 @@ CREATE TABLE animals (
     vet_id int REFERENCES vets (id) ON DELETE CASCADE
 );
 
+CREATE TABLE owners (
+    id serial PRIMARY KEY,
+    name varchar(255)
+    address varchar(255)
+);
+
+
+
