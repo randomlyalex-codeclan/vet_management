@@ -14,8 +14,6 @@ def index():
     owner_repository.create_no_owner()
     message = request.args.get('message')
     show_all = request.args.get('show_all')
-    # animal_id = "Animal id"+str(request.args.get('animal_id'))
-    # action = request.args.get('action')
     if show_all == "True":
         all_owners = owner_repository.select_all()
     else:
@@ -45,7 +43,6 @@ def new():
         else:
             return redirect(url_for("owner.index"))
     else:
-        # POST Error 405 Method Not Allowed
         print("POST Error 405 Method Not Allowed")
 
 

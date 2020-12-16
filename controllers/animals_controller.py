@@ -55,7 +55,7 @@ def new():
         print("POST Error 405 Method Not Allowed")
 
 
-@ animals_blueprint.route("/animals/detail/<action>/<id>", methods=["POST", "GET"])
+@animals_blueprint.route("/animals/detail/<action>/<id>", methods=["POST", "GET"])
 def detail(action, id):
     animal = animal_repository.select_id(id)
     len_treatments = len(treatment_repository.select_all_by_animal_id(id))

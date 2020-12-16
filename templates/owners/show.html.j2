@@ -3,16 +3,34 @@
 <article>
     <section class="left-article-section">
         <ul>
-            <li><span>ID : </span><span>{{owner.id}}</span></li>
-            <li><span>Active : </span><span>{% if owner.deactivated == False %}
+            <li>
+                <span>ID : </span>
+                <span>{{owner.id}}</span>
+            </li>
+            <li>
+                <span>Active : </span>
+                <span>
+                    {% if owner.deactivated == False %}
                     True
                     {% else %}
                     False
-                    {% endif %}</span></li>
-            <li><span>Name :</span> <span>{{owner.name}}</span></li>
-            <li><span>Address :</span> <span>{{owner.address}}</span></li>
-            <li><span>Animals :</span><span> <a href="/owners/detail/animals/{{owner.id}}">[ {{len_animals}}
-                        ]</a></span></li>
+                    {% endif %}
+                </span>
+            </li>
+            <li>
+                <span>Name :</span>
+                <span>{{owner.name}}</span>
+            </li>
+            <li>
+                <span>Address :</span>
+                <span>{{owner.address}}</span>
+            </li>
+            <li>
+                <span>Animals :</span>
+                <span>
+                    <a href="/owners/detail/animals/{{owner.id}}">[{{len_animals}}]</a>
+                </span>
+            </li>
 
 
 
@@ -30,12 +48,15 @@
                 <span>
                     <form action="/owners/detail/edit/{{owner.id}}" method="GET">
                         <input type="hidden" name="id" value="{{owner.id}}" />
-                        <button type="submit" value="edit">Edit</button>
+                        <button type="submit" value="edit">
+                            Edit
+                        </button>
                     </form>
                     <form action="/owners/detail/deactivate/{{owner.id}}" method="POST">
                         <input type="hidden" name="id" value="{{owner.id}}" />
-                        <button type="submit" value="delete"
-                            onclick="return confirm('Are you sure?')">Deactivate</button>
+                        <button type="submit" value="delete" onclick="return confirm('Are you sure?')">
+                            Deactivate
+                        </button>
                     </form>
                 </span>
             </li>

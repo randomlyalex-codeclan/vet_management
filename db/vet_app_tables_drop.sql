@@ -18,7 +18,7 @@ CREATE TABLE animals (
     name varchar(255),
     dob varchar(255),
     species varchar(255),
-    owner INT REFERENCES owners (id) ON DELETE CASCADE,
+    owner int REFERENCES owners (id) ON DELETE CASCADE,
     vet_id int REFERENCES vets (id) ON DELETE CASCADE,
     deactivated bool
 );

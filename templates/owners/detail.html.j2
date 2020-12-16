@@ -5,8 +5,12 @@
     <li>
         <span>
             <a href="/animals/detail/show/{{animal.id}}">{{animal.name}}</a>
-            <form action="/animals/detail/deactivate/{{animal.id}}" method="POST"><input type="hidden" name="id"
-                    value="{{animal.id}}" /><button type="submit" value="deactivate">X</button></form>
+            <form action="/animals/detail/deactivate/{{animal.id}}" method="POST">
+                <input type="hidden" name="id" value="{{animal.id}}" />
+                <button type="submit" value="deactivate">
+                    X
+                </button>
+            </form>
         </span>
     </li>
     {% endfor %}
