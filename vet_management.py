@@ -1,16 +1,22 @@
 from flask import Flask, render_template, request, redirect
 
-from controllers.animal_controller import animals_blueprint
-from controllers.vet_controller import vets_blueprint
-from controllers.owner_controller import owner_blueprint
+from controllers.animals_controller import animals_blueprint
+from controllers.vets_controller import vets_blueprint
+from controllers.owners_controller import owners_blueprint
+from controllers.treatments_controller import treatments_blueprint
 import repositories.vet_repository as vet_repository
 import repositories.animal_repository as animal_repository
 import repositories.owner_repository as owner_repository
+from models.owner import Owner
+
 
 app = Flask(__name__)
 
 app.register_blueprint(animals_blueprint)
 app.register_blueprint(vets_blueprint)
+app.register_blueprint(owners_blueprint)
+app.register_blueprint(treatments_blueprint)
+owner_repository.create_no_owner()
 
 
 @app.route("/")

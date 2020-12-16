@@ -1,0 +1,29 @@
+{% extends '/index.html.j2' %}
+{% block content %}
+<article>
+    <section class="left-article-section">
+        <ul>
+            {% for owner in all_owners %}
+            {% if  owner.id != 1%}
+            <li>
+                <a href="/owners/detail/show/{{owner.id}}">{{owner.name}}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            <li>
+                <a href="/owners/new">
+                    <button>Add New Owner</button>
+                </a>
+            </li>
+            <li><span><a href="{{ url_for("owners.index", show_all="True") }}">Show all</a></span><span> </span></li>
+            <li><span><a href="/owners/detail/orphaned/1" ) }}">Orphaned Animals</a></span><span> </span></li>
+        </ul>
+
+    </section>
+    <section class="right-article-section">
+
+    </section>
+</article>
+
+
+{% endblock content %}

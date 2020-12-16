@@ -1,0 +1,20 @@
+{% extends 'owners/show.html.j2' %}
+{% block detail %}
+<ul>
+    {% for animal in animals %}
+    <li>
+        <span>
+            <a href="/animals/detail/show/{{animal.id}}">{{animal.name}}</a>
+        </span>
+        <span>
+            <form action="/owners/detail/deactivate/{{animal.id}}" method="POST">
+                <input type="hidden" name="id" value="{{animal.id}}" />
+                <button type="submit" value="deactivate">
+                    [ Deactivate ]</button>
+            </form>
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock detail %}

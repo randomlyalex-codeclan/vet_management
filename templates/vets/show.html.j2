@@ -18,10 +18,10 @@
                             <input type="hidden" name="id" value="{{vet.id}}" />
                             <button type="submit" value="edit">Edit</button>
                         </form>
-                        <form action="/vets/detail/delete/{{vet.id}}" method="POST">
+                        <form action="/vets/detail/deactivate/{{vet.id}}" method="POST">
                             <input type="hidden" name="id" value="{{vet.id}}" />
                             <button type="submit" value="delete"
-                                onclick="return confirm('Are you sure?')">Delete</button>
+                                onclick="return confirm('Are you sure?')">Deactivate</button>
                         </form>
                     </section>
                 </span>

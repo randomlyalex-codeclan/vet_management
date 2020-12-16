@@ -36,10 +36,11 @@ def new():
         name = request.form['name']
         dob = request.form['dob']
         species = request.form['species']
-        owner = request.form['owner']
+        owner = owner_repository.select_id(1)
         vet_id = request.form['vet_id']
+        deactivated = False
         vet = vet_repository.select_id(vet_id)
-        animal = Animal(name, dob, species, owner, vet)
+        animal = Animal(name, dob, species, owner, vet, deactivated)
         saved_animal = animal_repository.save(animal)
         if saved_animal.id != None:
             message = f"Success {saved_animal.name} added"
@@ -57,22 +58,16 @@ def new():
 @ animals_blueprint.route("/animals/detail/<action>/<id>", methods=["POST", "GET"])
 def detail(action, id):
     animal = animal_repository.select_id(id)
+    len_treatments = len(treatment_repository.select_all_by_animal_id(id))
     if request.method == 'GET':
         if action == "show":
-            len_treatments = len(
-                treatment_repository.select_all_by_animal_id(id))
             return render_template("animals/show.html.j2", animal=animal, len_treatments=len_treatments)
         if action == "edit":
             vets = vet_repository.select_all()
             return render_template("animals/edit.html.j2", animal=animal, vets=vets)
         if action == "treatments":
-            treatments = animal.get_treatments()
-            len_treatments = len(treatments)
+            treatments = treatment_repository.select_all_by_animal_id(id)
             return render_template("animals/detail.html.j2", animal=animal, len_treatments=len_treatments, treatments=treatments)
-        if action == "treatments_edit":
-            treatments = animal.get_treatments()
-            len_treatments = len(treatments)
-            return render_template("animals/treatments_edit.html.j2", animal=animal, len_treatments=len_treatments, treatments=treatments)
     if request.method == 'POST':
         if action == "delete":
             animal_repository.delete_id(request.form['id'])
@@ -84,23 +79,25 @@ def detail(action, id):
             species = request.form['species']
             owner_id = request.form['owner_id']
             vet_id = request.form['vet_id']
-            id = request.form['id']
             try:
                 deactivated = request.form['deactivated']
             except:
                 deactivated = False
+            id = request.form['id']
             vet = vet_repository.select_id(vet_id)
             owner = owner_repository.select_id(owner_id)
             animal = Animal(name, dob, species, owner, vet, deactivated, id)
             animal_repository.update(animal)
             message = f"Animal: {animal.name} (id:{animal.id}) updated"
             return redirect(url_for("animals.index", message=message))
-        if action == "treatments_delete_all":
-            animal = animal_repository.select_id(request.form['id'])
-            animal.clear_treatment_history()
+        if action == "deactivate":
+            animal = animal_repository.select_id(id)
+            animal.owner = owner_repository.select_id(1)
+            animal.deactivated = True
             animal_repository.update(animal)
-            message = f"Animal: {animal.name} (id:{animal.id}) treatments deleted"
-            return redirect(url_for(f"animals.detail", action="show", id=animal.id, message=message))
+            message = f"{animal.name} moved to No Owner, please reassign"
+# I want an if statment to make thsi work too:  return redirect(url_for("owners.index", message=message))
+            return redirect(url_for("animals.index", message=message))
         else:
             message = "Malformed URL"
             return redirect(url_for("animals.index", message=message))

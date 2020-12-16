@@ -1,0 +1,24 @@
+{% extends '/index.html.j2' %}
+{% block content %}
+<article>
+
+    <section class="left-article-section">
+        <ul>
+            {% for treatment in all_treatments %}
+            <li>TID:{{treatment.id}}, VID:{{treatment.vet_id}}, AID:{{treatment.animal_id}}</li>
+            {% endfor %}
+        </ul>
+
+    </section>
+    <section class="right-article-section">
+        <ul>{% for treatment in all_treatments %}
+            <li> {{treatment.date}} - {{treatment.notes}} ({{treatment.weight}}Kg)</li>
+            {% endfor %}
+            <li><a href="/treatments/new"><button>Add New Treatment</button></a></li>
+            <li><span><a href="{{ url_for("treatments.index", show_all="True") }}">Show all</a></span><span> </span>
+            </li>
+        </ul>
+
+    </section>
+</article>
+{% endblock content %}

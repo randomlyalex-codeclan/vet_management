@@ -54,6 +54,38 @@ def select_all_active(deactivated=False):
     return animals
 
 
+def select_all_by_owner_id(id):
+    animals = []
+
+    sql = "SELECT * FROM animals WHERE owner = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        vet = vet_repository.select_id(row['vet_id'])
+        owner = owner_repository.select_id(row['owner'])
+        animal = Animal(row['name'], row['dob'], row['species'],
+                        owner, vet, row['deactivated'], row['id'])
+        animals.append(animal)
+    return animals
+
+
+def select_all_by_vet_id(id):
+    animals = []
+
+    sql = "SELECT * FROM animals WHERE vet_id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        vet = vet_repository.select_id(row['vet_id'])
+        owner = owner_repository.select_id(row['owner'])
+        animal = Animal(row['name'], row['dob'], row['species'],
+                        owner, vet, row['deactivated'], row['id'])
+        animals.append(animal)
+    return animals
+
+
 def select_id(id):
     animal = None
     sql = "SELECT * FROM animals WHERE id = %s"

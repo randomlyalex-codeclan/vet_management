@@ -15,7 +15,7 @@ body {
 /* disable bullets on lists site wide */
 li {
     list-style:none;
-    white-space: nowrap;
+    
 }
 
 a {
@@ -24,7 +24,7 @@ a {
 }
 
 a:hover{
-    color: rgb(22, 15, 41);
+    color: rgb(213, 13, 13);
     
 }
 /* main container for the whole website */
@@ -62,15 +62,18 @@ nav > ul {
     padding:0;
     display:flex;
     justify-content: space-around;
-    flex-basis: content;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+
 }
 
 /* addressing the nav list for styles */
 nav > ul > li {
     background-color: #368f8bff;
     padding:7px;
+    margin: 3px;
     border-radius: 5px;
+    width:140px;
+    white-space: nowrap;
 }
 nav > ul > li  > a{
     color: white;

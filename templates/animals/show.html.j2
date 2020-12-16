@@ -14,9 +14,7 @@
             <li><span>dob :</span><span> {{animal.dob}}</span></li>
             <li><span>species :</span><span> {{animal.species}}</span></li>
             <li><span>owner :</span><span> {{animal.owner.name}}</span></li>
-            <li><span>Treatments :</span><span> <a href="/animals/detail/treatments/{{animal.id}}"> {{len_treatments}}
-                        Treatments
-                    </a></span></li>
+            <li><span>Treatments :</span><span> <a href="/animals/detail/treatments/{{animal.id}}">[ {{len_treatments}} ]</a></span></li>
             <li><span>Vet :</span><span> {{animal.vet.name}}</span></li>
             <li><span></span>
                 <span>
@@ -25,10 +23,10 @@
                             <input type="hidden" name="id" value="{{animal.id}}" />
                             <button type="submit" value="edit">Edit</button>
                         </form>
-                        <form action="/animals/detail/delete/{{animal.id}}" method="POST">
+                        <form action="/animals/detail/deactivate/{{animal.id}}" method="POST">
                             <input type="hidden" name="id" value="{{animal.id}}" />
-                            <button type="submit" value="delete"
-                                onclick="return confirm('Are you sure?')">Delete</button>
+                            <button type="submit" value="deactivate"
+                                onclick="return confirm('Are you sure?')">Deactivate</button>
                         </form>
                     </section>
                 </span>

@@ -26,7 +26,7 @@ def save(treatment):
 
 def select_all():
     treatments = []
-    sql = "SELECT * FROM treatments"
+    sql = "SELECT * FROM treatments ORDER BY id ASC"
     results = run_sql(sql)
 
     for row in results:

@@ -1,0 +1,17 @@
+{% extends '/index.html.j2' %}
+{% block content %}
+<article>
+    <form action="/owners/detail/edit/{{owner.id}}" method="POST">
+        <ul>
+            <li><span>ID: </span><span>{{owner.id}}</span></li>
+            <li><span>Name: </span><span><input type="text" name="name" value="{{owner.name}}" required></span></li>
+            <li><span>Address: </span><span><textarea name="address"rows="4" cols="30" required>{{owner.address}}</textarea></span></li>
+            <li><span>Deactivate ? </span>
+                    <span><input type="checkbox" name="deactivated" value="True" {% if owner.deactivated == True %}
+                            checked {% endif %}></span> </li>
+            <input type="hidden" name="id" value={{owner.id}}>
+            <li><span><span><button type="submit" name="action" value="save">Save</button></span></li>
+        </ul>
+    </form>
+</article>
+{% endblock content %}
