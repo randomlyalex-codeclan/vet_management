@@ -121,11 +121,19 @@ main > article {
     margin:5px;
     border-radius: 5px;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: auto 5em;
     background-color:#f3dfc1ff;
     justify-content: center;
 
 }
+
+.center-bottom-article-section {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    align-self: center;
+}
+
 
 main > article > ul {
     padding:0;
@@ -137,7 +145,7 @@ main > article > ul {
 /* most lists with the main article should line up the labels */
 main > article > ul > li, form > ul >li {
     display: grid;
-    grid-template-columns: 5em 5em;;
+    grid-template-columns: 6em 6em;
 }
 
 /* most forms within the main article should line up their boxes and not labels */
@@ -150,4 +158,8 @@ main > article > ul > li, form > ul >li {
 .bottom-submit-buttons {
     display:flex
 
+}
+
+button {
+    white-space: nowrap;
 }
