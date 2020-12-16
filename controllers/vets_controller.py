@@ -11,8 +11,6 @@ vets_blueprint = Blueprint("vets", __name__)
 def index():
     message = request.args.get('message')
     show_all = request.args.get('show_all')
-    # animal_id = "Animal id"+str(request.args.get('animal_id'))
-    # action = request.args.get('action')
     if show_all == "True":
         all_vets = vet_repository.select_all()
     else:
@@ -41,8 +39,8 @@ def new():
         else:
             return redirect(url_for("vets.index"))
     else:
-        # POST Error 405 Method Not Allowed
-        print("POST Error 405 Method Not Allowed")
+        message = "Error finding or displaying page"
+        return redirect(url_for("index", message=message))
 
 
 @ vets_blueprint.route("/vets/detail/<action>/<id>", methods=["POST", "GET"])
@@ -53,6 +51,9 @@ def detail(action, id):
             return render_template("vets/show.html.j2", vet=vet)
         if action == "edit":
             return render_template("vets/edit.html.j2", vet=vet)
+    else:
+        message = "Error Malformed URL"
+        return redirect(url_for("vets.index", message=message))
     if request.method == 'POST':
         if action == "delete":
             vet_repository.delete_id(request.form['id'])
@@ -81,5 +82,5 @@ def detail(action, id):
                 message = f"Vet: {vet.name} (id:{vet.id}) has animals assigned, reassign these first"
             return redirect(url_for("vets.index", message=message))
         else:
-            message = "Malformed URL"
+            message = "Error Malformed URL"
             return redirect(url_for("vets.index", message=message))

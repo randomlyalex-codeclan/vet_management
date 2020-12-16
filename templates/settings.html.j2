@@ -4,16 +4,34 @@
     <section class="left-article-section"></section>
     <section class="right-article-section">
     <ul>
-        <form action="/settings" method="POST">
-            <li><button type="submit" name="action" value="delete_all_vets"
-                    onclick="return confirm('Are you sure?')">Delete
-                    all
-                    Vets</button>
+        <li>Delete by Vet ID: Input box here<li>
+        <li>Delete by Animal ID: Input box here<li>
+        <li> Delete by Owner ID: Input box here<li>
+        <li><li>
+        <li><li>
+        <li>
+            <form action="/settings" method="POST">
+                <button type="submit" name="action" value="delete_all_vets"
+                    onclick="return confirm('Are you sure?')">
+                    Delete all Vets
+                </button>
         </form>
-        <form action="/settings" method="POST">
-            <li><button type="submit" name="action" value="delete_all_animals"
-                    onclick="return confirm('Are you sure?')">Delete all
-                    Animals</button>
+        </li>
+        <li>
+            <form action="/settings" method="POST">
+                <button type="submit" name="action" value="delete_all_owners"
+                    onclick="return confirm('Are you sure?')">
+                    Delete all Owners
+                </button>
+        </form>
+        </li>
+        <li>
+            <form action="/settings" method="POST">
+            <button type="submit" name="action" value="delete_all_animals"
+                    onclick="return confirm('Are you sure?')">
+                    Delete all Animals
+                    </button>
+        </li>
     </ul>
     </form>
     </section>

@@ -1,16 +1,31 @@
 {% extends '/index.html.j2' %}
 {% block content %}
 <article>
-    <form action="/vets/detail/edit/{{vet.id}}" method="POST">
-        <ul>
-            <li><span>ID: </span><span>{{vet.id}}</span></li>
-            <li><span>Name: </span><span><input type="text" name="name" value={{vet.name}} required></span></li>
-            <li><span>Deactivate ? </span>
+    <section class="left-article-section">
+        <form action="/vets/detail/edit/{{vet.id}}" method="POST">
+            <ul>
+                <li><span>ID: </span><span>{{vet.id}}</span></li>
+                <li><span>Name: </span><span><input type="text" name="name" value={{vet.name}} required></span></li>
+                <li><span>Deactivate ? </span>
                     <span><input type="checkbox" name="deactivated" value="True" {% if vet.deactivated == True %}
                             checked {% endif %}></span> </li>
-            <input type="hidden" name="id" value={{vet.id}}>
-            <li><span><span><button type="submit" name="action" value="save">Save</button></span></li>
-        </ul>
-    </form>
+                <input type="hidden" name="id" value={{vet.id}}>
+                <!-- <li><span><span><button type="submit" name="action" value="save">Save</button></span></li> -->
+            </ul>
+
+    </section>
+    <section class="right-article-section">
+
+    </section>
+    <section class="center-bottom-article-section">
+        <ul>
+            <li>
+                <span></span>
+                <span><button type="submit" name="action" value="save">Save</button></span>
+            </li>
+        </uL>
+        </form>
+    </section>
+
 </article>
 {% endblock content %}

@@ -1,7 +1,8 @@
 {% extends '/index.html.j2' %}
 {% block content %}
 <article>
-    <form action="/owners/detail/edit/{{owner.id}}" method="POST">
+    <section class="left-article-section">
+        <form action="/owners/detail/edit/{{owner.id}}" method="POST">
         <ul>
             <li><span>ID: </span><span>{{owner.id}}</span></li>
             <li><span>Name: </span><span><input type="text" name="name" value="{{owner.name}}" required></span></li>
@@ -13,5 +14,14 @@
             <li><span><span><button type="submit" name="action" value="save">Save</button></span></li>
         </ul>
     </form>
+    </section>
+    <section class="right-article-section">
+    
+    </section>
+    <section class="center-bottom-article-section">
+        <ul>
+            
+        </ul>
+    </section>
 </article>
 {% endblock content %}

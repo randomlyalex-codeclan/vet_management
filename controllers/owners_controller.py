@@ -56,16 +56,19 @@ def detail(action, id):
         len_animals = len(animal_repository.select_all_by_owner_id(id))
         if action == "show":
             return render_template("owners/show.html.j2", owner=owner, len_animals=len_animals)
-        if action == "edit":
+        elif action == "edit":
             return render_template("owners/edit.html.j2", owner=owner)
-        if action == "animals":
+        elif action == "animals":
             return render_template("owners/detail.html.j2", owner=owner, len_animals=len_animals, animals=animals)
-        if action == "orphaned":
+        elif action == "orphaned":
             animals = animal_repository.select_all_by_owner_id(1)
             owner = owner_repository.select_id(1)
             return render_template("owners/orphaned.html.j2", owner=owner, len_animals=len_animals, animals=animals)
-        if action == "animals_edit":
+        elif action == "animals_edit":
             return render_template("owners/animal_edit.html.j2", owner=owner, len_animals=len_animals, animal=animals)
+        else:
+            message = "Malformed URL"
+            return redirect(url_for("owners.index", message=message))
     if request.method == 'POST':
         if action == "delete":
             owner_repository.delete_id(request.form['id'])

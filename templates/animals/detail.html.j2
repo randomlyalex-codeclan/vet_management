@@ -4,21 +4,6 @@
     {% for treatment in treatments %}
     <li> {{treatment.date}} - {{treatment.notes}} ({{treatment.weight}}Kg)</li>
     {% endfor %}
-    <li><span></span>
-        <span>
-            <section class="bottom-submit-buttons">
-                <!-- <form action="/animals/detail/treatments_edit/{{animal.id}}" method="GET">
-                    <input type="hidden" name="id" value="{{animal.id}}" />
-                    <button type="submit" value="edit">Edit</button>
-                </form>
-                <form action="/animals/detail/treatments_delete_all/{{animal.id}}" method="POST">
-                    <input type="hidden" name="id" value="{{animal.id}}" />
-                    <button type="submit" name="action" value="treatments_delete_all"
-                        onclick="return confirm('Are you sure?')">Delete
-                        All</button>
-                </form> -->
-            </section>
-        </span></li>
 </ul>
 
 {% endblock detail %}

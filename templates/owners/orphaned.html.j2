@@ -9,11 +9,6 @@
             <a href="/animals/detail/show/{{animal.id}}">{{animal.name}}</a>
         </span>
         <span>
-            <form action="/owners/detail/deactivate/{{animal.id}}" method="POST">
-                <input type="hidden" name="id" value="{{animal.id}}" />
-                <button type="submit" value="deactivate">
-                    [ Deactivate ]</button>
-            </form>
         </span>
     </li>
     {% endif %}

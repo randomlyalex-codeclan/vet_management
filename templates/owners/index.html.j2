@@ -10,18 +10,33 @@
             </li>
             {% endif %}
             {% endfor %}
-            <li>
-                <a href="/owners/new">
-                    <button>Add New Owner</button>
-                </a>
-            </li>
-            <li><span><a href="{{ url_for("owners.index", show_all="True") }}">Show all</a></span><span> </span></li>
-            <li><span><a href="/owners/detail/orphaned/1" ) }}">Orphaned Animals</a></span><span> </span></li>
+
         </ul>
 
     </section>
     <section class="right-article-section">
 
+    </section>
+    <section class="center-bottom-article-section">
+        <ul>
+            <li>
+                <a href="/owners/new">
+                    <button>Add New Owner</button>
+                </a>
+            </li>
+            <li>
+                <span>
+                    <a href="{{ url_for("owners.index", show_all="True") }}">Show all</a>
+                </span>
+                <span> </span>
+            </li>
+            <li>
+                <span>
+                    <a href="/owners/detail/orphaned/1" ) }}">Orphaned Animals</a>
+                </span>
+                <span> </span>
+            </li>
+        </ul>
     </section>
 </article>
 

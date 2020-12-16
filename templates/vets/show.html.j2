@@ -3,32 +3,40 @@
 <article>
     <section class="left-article-section">
         <ul>
-            <li><span>ID : </span><span>{{vet.id}}</span></li>
-            <li><span>Active : </span><span>{% if vet.deactivated == False %}
-                True
-                {% else %}
-                False
-                {% endif %}</span></li>
-            <li><span>Name :</span> <span>{{vet.name}}</span></li>
-            
-            <li><span></span>
-                <span>
-                    <section class="bottom-submit-buttons">
-                        <form action="/vets/detail/edit/{{vet.id}}" method="GET">
-                            <input type="hidden" name="id" value="{{vet.id}}" />
-                            <button type="submit" value="edit">Edit</button>
-                        </form>
-                        <form action="/vets/detail/deactivate/{{vet.id}}" method="POST">
-                            <input type="hidden" name="id" value="{{vet.id}}" />
-                            <button type="submit" value="delete"
-                                onclick="return confirm('Are you sure?')">Deactivate</button>
-                        </form>
-                    </section>
-                </span>
-
-
+            <li>
+                <span>ID : </span>
+                <span>{{vet.id}}</span>
+            </li>
+            <li><span>Active : </span>
+                <span>{% if vet.deactivated == False %}
+                    True
+                    {% else %}
+                    False
+                    {% endif %}</span>
+            </li>
+            <li><span>Name :</span>
+                <span>{{vet.name}}</span></li>
         </ul>
     </section>
-    <section class="right-article-section"></section>
+    <section class="right-article-section">
+    </section>
+    <section class="center-bottom-article-section">
+        <ul>
+            <li><span></span>
+                <span>
+                    <form action="/vets/detail/edit/{{vet.id}}" method="GET">
+                        <input type="hidden" name="id" value="{{vet.id}}" />
+                        <button type="submit" value="edit">Edit</button>
+                    </form>
+                    <form action="/vets/detail/deactivate/{{vet.id}}" method="POST">
+                        <input type="hidden" name="id" value="{{vet.id}}" />
+                        <button type="submit" value="delete"
+                            onclick="return confirm('Are you sure?')">Deactivate</button>
+                    </form>
+                </span></li>
+        </ul>
+
+
+    </section>
 </article>
 {% endblock content %}

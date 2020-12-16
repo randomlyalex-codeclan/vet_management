@@ -5,27 +5,15 @@
         <ul>
             <li><span>ID : </span><span>{{owner.id}}</span></li>
             <li><span>Active : </span><span>{% if owner.deactivated == False %}
-                True
-                {% else %}
-                False
-                {% endif %}</span></li>
+                    True
+                    {% else %}
+                    False
+                    {% endif %}</span></li>
             <li><span>Name :</span> <span>{{owner.name}}</span></li>
             <li><span>Address :</span> <span>{{owner.address}}</span></li>
-            <li><span>Animals :</span><span> <a href="/owners/detail/animals/{{owner.id}}">[ {{len_animals}} ]</a></span></li>
-            <li><span></span>
-                <span>
-                    <section class="bottom-submit-buttons">
-                        <form action="/owners/detail/edit/{{owner.id}}" method="GET">
-                            <input type="hidden" name="id" value="{{owner.id}}" />
-                            <button type="submit" value="edit">Edit</button>
-                        </form>
-                        <form action="/owners/detail/deactivate/{{owner.id}}" method="POST">
-                            <input type="hidden" name="id" value="{{owner.id}}" />
-                            <button type="submit" value="delete"
-                                onclick="return confirm('Are you sure?')">Deactivate</button>
-                        </form>
-                    </section>
-                </span>
+            <li><span>Animals :</span><span> <a href="/owners/detail/animals/{{owner.id}}">[ {{len_animals}}
+                        ]</a></span></li>
+
 
 
         </ul>
@@ -33,6 +21,24 @@
     <section class="right-article-section">
         {% block detail %}
         {% endblock detail %}
+    </section>
+    <section class="center-bottom-article-section">
+        <ul>
+            <li>
+                <span></span>
+                <span>
+                    <form action="/owners/detail/edit/{{owner.id}}" method="GET">
+                        <input type="hidden" name="id" value="{{owner.id}}" />
+                        <button type="submit" value="edit">Edit</button>
+                    </form>
+                    <form action="/owners/detail/deactivate/{{owner.id}}" method="POST">
+                        <input type="hidden" name="id" value="{{owner.id}}" />
+                        <button type="submit" value="delete"
+                            onclick="return confirm('Are you sure?')">Deactivate</button>
+                    </form>
+                </span>
+            </li>
+        </ul>
     </section>
 </article>
 {% endblock content %}

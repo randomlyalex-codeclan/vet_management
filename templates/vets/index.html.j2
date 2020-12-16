@@ -4,17 +4,29 @@
     <section class="left-article-section">
         <ul>
             {% for vet in all_vets %}
-            <li><a href="/vets/detail/show/{{vet.id}}">{{vet.name}}</a></li>
-            {% endfor %} 
+            <li>
+                <a href="/vets/detail/show/{{vet.id}}">{{vet.name}}</a>
+            </li>
+            {% endfor %}
         </ul>
     </section>
     <section class="right-article-section">
-        
+
     </section>
     <section class="center-bottom-article-section">
         <ul>
-            <li><a href="/vets/new"><button>Add New Vet</button></a></li>
-            <li><span><a href="{{ url_for("vets.index", show_all="True") }}">Show all</a></span><span> </span></li> 
+            <li>
+                <a href="/vets/new">
+                    <button>Add New Vet</button>
+                </a>
+            </li>
+            <li><span>
+                    <a href="{{ url_for("vets.index", show_all="True") }}">Show all</a>
+                </span>
+                <span>
+
+                </span>
+            </li>
         </ul>
     </section>
 
