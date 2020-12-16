@@ -62,7 +62,7 @@ def detail(action, id):
             vet_repository.delete_id(request.form['id'])
             message = f"Vet: {vet.name} (id:{vet.id}) deleted"
             return redirect(url_for("vets.index", message=message))
-        if action == "edit":
+        elif action == "edit":
             name = request.form['name']
             try:
                 deactivated = request.form['deactivated']
@@ -75,7 +75,7 @@ def detail(action, id):
             vet_repository.update(vet)
             message = f"Vet: {vet.name} (id:{vet.id}) updated"
             return redirect(url_for("vets.index", message=message))
-        if action == "deactivate":
+        elif action == "deactivate":
             if len(animal_repository.select_all_by_vet_id(id)) == 0:
                 vet = vet_repository.select_id(id)
                 vet.deactivated = True

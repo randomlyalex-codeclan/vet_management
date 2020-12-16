@@ -8,3 +8,6 @@ class Animal():
         self.vet = vet
         self.deactivated = deactivated
         self.id = id
+
+    def plot_weight(self):
+        pass
