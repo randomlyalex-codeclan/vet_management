@@ -23,6 +23,7 @@
         {% endblock detail %}
     </section>
     <section class="center-bottom-article-section">
+        {% if owner.id != 1 %}
         <ul>
             <li>
                 <span></span>
@@ -39,6 +40,7 @@
                 </span>
             </li>
         </ul>
+        {% endif %}
     </section>
 </article>
 {% endblock content %}

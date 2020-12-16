@@ -8,13 +8,6 @@
                 <li><span>Name: </span><span><input type="text" name="name" id="" required></span></li>
                 <li><span>DoB: </span><input type="text" name="dob" id="" required></li>
                 <li><span>Species: </span><input type="text" name="species" id="" required></li>
-                <!-- <li><span>Owner: </span> <span> <select name="vet_id">
-                            {% for vet in vets %}
-                            <option value="{{ vet.id }}">
-                                {{ vet.name }}
-                            </option>
-                            {% endfor %}
-                        </select></span> -->
                 <li><span>Vet: </span> <span> <select name="vet_id">
                             {% for vet in vets %}
                             <option value="{{ vet.id }}">

@@ -84,6 +84,8 @@ def detail(action, id):
             else:
                 message = f"Vet: {vet.name} (id:{vet.id}) has animals assigned, reassign these first"
             return redirect(url_for("vets.index", message=message))
+        # elif action == "move_animals":
+            #code to move all animals from one vet to another#
         else:
             message = "Error Malformed URL"
             return redirect(url_for("vets.index", message=message))

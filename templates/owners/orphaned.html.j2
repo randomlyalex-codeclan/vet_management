@@ -2,16 +2,21 @@
 {% block detail %}
 <ul>
     {% for animal in animals %}
-    {% if animal.owner.id == 1 %}
-    UPDATE THIS TOMORROW
     <li>
         <span>
-            <a href="/animals/detail/show/{{animal.id}}">{{animal.name}}</a>
+            <a href="/animals/detail/show/{{animal.id}}">{{animal.name}}</a> 
         </span>
         <span>
+                <select name="owner_id">
+                            {% for owner in all_owners %}
+                            <option value="{{ owner.id }}" {% if owner.id == 1 %} selected {% endif %}>
+                                {{ owner.name }}
+                            </option>
+                            {% endfor %}
+                        </select></span>
+
         </span>
     </li>
-    {% endif %}
     {% endfor %}
 </ul>
 
