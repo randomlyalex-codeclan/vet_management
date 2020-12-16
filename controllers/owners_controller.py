@@ -11,6 +11,7 @@ owners_blueprint = Blueprint("owners", __name__)
 
 @owners_blueprint.route("/owners")
 def index():
+    owner_repository.create_no_owner()
     message = request.args.get('message')
     show_all = request.args.get('show_all')
     # animal_id = "Animal id"+str(request.args.get('animal_id'))

@@ -81,12 +81,12 @@ def update(owner):
 
 
 def delete_all():
-    sql = "DELETE FROM owners CASCADE"
+    sql = "DELETE FROM owners WHERE id > 1"
     run_sql(sql)
 
 
 def delete_all_deactivated(deactivated=True):
-    sql = "DELETE FROM owners WHERE deactivated = %s CASCADE"
+    sql = "DELETE FROM owners WHERE deactivated = %s"
     values = [deactivated]
     run_sql(sql, values)
 

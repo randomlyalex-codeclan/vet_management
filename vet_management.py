@@ -16,8 +16,6 @@ app.register_blueprint(animals_blueprint)
 app.register_blueprint(vets_blueprint)
 app.register_blueprint(owners_blueprint)
 app.register_blueprint(treatments_blueprint)
-owner_repository.create_no_owner()
-
 
 @app.route("/")
 def main():
@@ -29,14 +27,31 @@ def settings():
     if request.method == 'GET':
         return render_template('settings.html.j2')
     if request.method == 'POST':
-        if request.form['action'] == "delete_all_vets":
-            vet_repository.delete_all()
-            message = "All Vets Deleted and associated animals deleted"
-            return render_template('settings.html.j2', message=message)
-        elif request.form['action'] == "delete_all_animals":
-            animal_repository.delete_all()
-            message = "All Animals Deleted"
-            return render_template('settings.html.j2', message=message)
+        if request.form['action'] == "delete_id":
+            id = request.form['id']
+            if request.form['table'] == "vet":
+                vet = vet_repository.select_id(id)
+                vet_repository.delete_id(id)
+                message = f"Vet {vet.name} {vet.id} deleted, and cascaded"
+            elif request.form['table'] == "owner":
+                owner = owner_repository.select_id(id)
+                owner_repository.delete_id(id)
+                message = f"Owner {owner.name} {owner.id} deleted, and cascaded"
+            elif request.form['table'] == "animal":
+                animal = animal_repository.select_id(id)
+                animal_repository.delete_id(id)
+                message = f"Vet {animal.name} {animal.id} deleted, and cascaded"
+        elif request.form['action'] == "delete_all":
+            if request.form['table'] == "vet":
+                vet_repository.delete_all()
+                message = "All Vets deleted, and cascaded"
+            elif request.form['table'] == "owner":
+                owner_repository.delete_all()
+                message = f"All Owners deleted, and cascaded"
+            elif request.form['table'] == "animal":
+                animal_repository.delete_all()
+                message = f"All Animals deleted, and cascaded"
+        return render_template('settings.html.j2', message=message)
 
 
 @app.route("/help")

@@ -16,8 +16,7 @@ test_vet_peter = Vet("Peter", False)
 test_vet_mark = Vet("Mark", False)
 test_vet_paul = Vet("Paul", False)
 
-test_owner_no_owner = Owner(
-    "No Owner", "Holding space for orphaned and new Animals", False)
+
 test_owner_david = Owner("David", "Edinburgh", False)
 test_owner_carl = Owner("Carl", "liverpool", False)
 test_owner_jamie = Owner("Jamie", "Glasgow", False)
@@ -53,7 +52,6 @@ vet_repository.save(test_vet_peter)
 vet_repository.save(test_vet_mark)
 vet_repository.save(test_vet_paul)
 # save 4 owners
-owner_repository.save(test_owner_no_owner)
 owner_repository.save(test_owner_david)
 owner_repository.save(test_owner_carl)
 owner_repository.save(test_owner_jamie)

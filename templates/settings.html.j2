@@ -4,14 +4,35 @@
     <section class="left-article-section"></section>
     <section class="right-article-section">
     <ul>
-        <li>Delete by Vet ID: Input box here<li>
-        <li>Delete by Animal ID: Input box here<li>
-        <li> Delete by Owner ID: Input box here<li>
-        <li><li>
-        <li><li>
+        <li>Delete by Vet ID: 
+            <form action="/settings" method="POST">
+                <input type="hidden" name="table" value="vet">
+                <input type="number" name="id" required>
+                <button type="submit" name="action" value="delete_id"
+                    onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                    </li>
+        <li>Delete by Owner ID: 
+            <form action="/settings" method="POST">
+                <input type="hidden" name="table" value="owner">
+                <input type="text" name="id" required>
+                <button type="submit" name="action" value="delete_id"
+                    onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                    </li>
+        <li>Delete by Animal ID: 
+            <form action="/settings" method="POST">
+                <input type="hidden" name="table" value="animal">
+                <input type="text" name="id" required>
+                <button type="submit" name="action" value="delete_id"
+                    onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                    </li>
+        <li></li>
         <li>
             <form action="/settings" method="POST">
-                <button type="submit" name="action" value="delete_all_vets"
+                <input type="hidden" name="table" value="vet">
+                <button type="submit" name="action" value="delete_all"
                     onclick="return confirm('Are you sure?')">
                     Delete all Vets
                 </button>
@@ -19,7 +40,8 @@
         </li>
         <li>
             <form action="/settings" method="POST">
-                <button type="submit" name="action" value="delete_all_owners"
+            <input type="hidden" name="table" value="owner">
+                <button type="submit" name="action" value="delete_all"
                     onclick="return confirm('Are you sure?')">
                     Delete all Owners
                 </button>
@@ -27,7 +49,8 @@
         </li>
         <li>
             <form action="/settings" method="POST">
-            <button type="submit" name="action" value="delete_all_animals"
+            <input type="hidden" name="table" value="animal">
+            <button type="submit" name="action" value="delete_all"
                     onclick="return confirm('Are you sure?')">
                     Delete all Animals
                     </button>
