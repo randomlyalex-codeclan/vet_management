@@ -62,12 +62,15 @@ def detail(action, id):
     if request.method == 'GET':
         if action == "show":
             return render_template("animals/show.html.j2", animal=animal, len_treatments=len_treatments)
-        if action == "edit":
+        elif action == "edit":
             vets = vet_repository.select_all()
             return render_template("animals/edit.html.j2", animal=animal, vets=vets)
-        if action == "treatments":
+        elif action == "treatments":
             treatments = treatment_repository.select_all_by_animal_id(id)
             return render_template("animals/detail.html.j2", animal=animal, len_treatments=len_treatments, treatments=treatments)
+        else:
+            message = "Malformed URL"
+            return redirect(url_for("animals.index", message=message))
     if request.method == 'POST':
         if action == "delete":
             animal_repository.delete_id(request.form['id'])

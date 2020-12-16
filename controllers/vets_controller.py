@@ -36,6 +36,10 @@ def new():
                 return redirect(url_for("vets.index", message=message))
             elif request.form['action'] == "continue":
                 return render_template("vets/new.html.j2", message=message)
+            else:
+                message = "Malformed URL"
+            return redirect(url_for("vets.index", message=message))
+
         else:
             return redirect(url_for("vets.index"))
     else:
