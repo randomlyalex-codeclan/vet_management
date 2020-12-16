@@ -39,7 +39,6 @@ def new():
             else:
                 message = "Malformed URL"
             return redirect(url_for("vets.index", message=message))
-
         else:
             return redirect(url_for("vets.index"))
     else:
@@ -53,11 +52,11 @@ def detail(action, id):
     if request.method == 'GET':
         if action == "show":
             return render_template("vets/show.html.j2", vet=vet)
-        if action == "edit":
+        elif action == "edit":
             return render_template("vets/edit.html.j2", vet=vet)
-    else:
-        message = "Error Malformed URL"
-        return redirect(url_for("vets.index", message=message))
+        else:
+            message = "Error Malformed URL"
+            return redirect(url_for("vets.index", message=message))
     if request.method == 'POST':
         if action == "delete":
             vet_repository.delete_id(request.form['id'])
