@@ -76,7 +76,7 @@ def detail(action, id):
             animal_repository.delete_id(request.form['id'])
             message = f"Animal: {animal.name} (id:{animal.id}) deleted"
             return redirect(url_for("animals.index", message=message))
-        if action == "edit":
+        elif action == "edit":
             name = request.form['name']
             dob = request.form['dob']
             species = request.form['species']
@@ -93,7 +93,7 @@ def detail(action, id):
             animal_repository.update(animal)
             message = f"Animal: {animal.name} (id:{animal.id}) updated"
             return redirect(url_for("animals.index", message=message))
-        if action == "deactivate":
+        elif action == "deactivate":
             animal = animal_repository.select_id(id)
             animal.owner = owner_repository.select_id(1)
             animal.deactivated = True
