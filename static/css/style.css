@@ -138,22 +138,12 @@ main > article {
 main > article > ul {
     padding:0;
 
-    
-    /* align-self: end; */
-
 }
 /* most lists with the main article should line up the labels */
 main > article > ul > li, form > ul >li {
     display: grid;
     grid-template-columns: 6em 6em;
 }
-
-/* most forms within the main article should line up their boxes and not labels */
-/* form > ul {
-    /* display: inline-block;
-    width: 140px; */
-    /* text-align: right; */
-/* } */ 
 
 .bottom-submit-buttons {
     display:flex

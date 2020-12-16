@@ -5,22 +5,48 @@
     <section class="right-article-section">
         <form action="#" method="POST">
             <ul>
-                <li><span>Name: </span><span><input type="text" name="name" id="" required></span></li>
-                <li><span>DoB: </span><input type="text" name="dob" id="" required></li>
-                <li><span>Species: </span><input type="text" name="species" id="" required></li>
-                <li><span>Vet: </span> <span> <select name="vet_id">
+                <li>
+                    <span>Name: </span>
+                    <span>
+                        <input type="text" name="name" id="" required>
+                    </span>
+                </li>
+                <li>
+                    <span>DoB: </span>
+                    <span>
+                        <input type="text" name="dob" id="" required>
+                    </span>
+                </li>
+                <li>
+                    <span>Species: </span>
+                    <span>
+                        <input type="text" name="species" id="" required>
+                    </span>
+                </li>
+                <li>
+                    <span>Vet: </span>
+                    <span>
+                        <select name="vet_id">
                             {% for vet in vets %}
                             <option value="{{ vet.id }}">
                                 {{ vet.name }}
                             </option>
                             {% endfor %}
-                        </select></span>
+                        </select>
+                    </span>
                 <li>
                     <span>
-                        <button type="submit" name="action" value="continue">Save & Add more</button>
-                        <button type="submit" name="action" value="finish">Save & Return</button>
+                        <button type="submit" name="action" value="continue">
+                            Save & Add more
+                        </button>
+                        <button type="submit" name="action" value="finish">
+                            Save & Return
+                        </button>
                     </span>
-                    <span><button type="reset" value="discard">Reset</button></span>
+                    <span><button type="reset" value="discard">
+                            Reset
+                        </button>
+                    </span>
                 </li>
             </ul>
         </form>

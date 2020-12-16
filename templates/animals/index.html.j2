@@ -1,21 +1,17 @@
 {% extends '/index.html.j2' %}
 {% block content %}
 <article>
+    {% if no_vets == False %}
     <section class="left-article-section">
-        {% if no_vets == False %}
         <ul>
             {% for animal in all_animals %}
             <li>
                 <a href="/animals/detail/show/{{animal.id}}">{{animal.name}}</a>
             </li>
             {% endfor %}
-
         </ul>
-
-
     </section>
     <section class="right-article-section">
-
     </section>
     <section class="center-bottom-article-section">
         <ul>

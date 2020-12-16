@@ -10,14 +10,21 @@
                 </li>
                 <li>
                     <span>Name: </span>
-                    <span><input type="text" name="name" value="{{animal.name}} " required></span>
+                    <span>
+                        <input type="text" name="name" value="{{animal.name}} " required>
+                    </span>
                 </li>
                 <li>
                     <span>Dob: </span>
-                    <span><input type="text" name="dob" value="{{animal.dob}} " required></span></li>
+                    <span>
+                        <input type="text" name="dob" value="{{animal.dob}} " required>
+                    </span>
+                </li>
                 <li>
                     <span>Species: </span>
-                    <span><input type="text" name="species" value="{{animal.species}}" required></span>
+                    <span>
+                        <input type="text" name="species" value="{{animal.species}}" required>
+                    </span>
                 </li>
                 <li>
                     <span>Owner: </span>
@@ -25,30 +32,34 @@
                 </li>
                 <li>
                     <span>Vet: </span>
-                    <span><select name="vet_id">
+                    <span>
+                        <select name="vet_id">
                             {% for vet in vets %}
                             <option value="{{ vet.id }}" {% if vet.id == animal.vet.id %} selected {% endif %}>
                                 {{ vet.name }}
                             </option>
                             {% endfor %}
-                        </select></li>
+                        </select>
+                </li>
                 <li>
                     <span>Deactivate ? </span>
-                    <span><input type="checkbox" name="deactivated" value="True" {% if animal.deactivated == True %}
-                            checked {% endif %}></span>
+                    <span>
+                        <input type="checkbox" name="deactivated" value="True" {% if animal.deactivated == True %}
+                            checked {% endif %}>
+                    </span>
                 </li>
                 <input type="hidden" name="id" value={{animal.id}}>
                 <input type="hidden" name="owner_id" value={{animal.owner.id}}>
-
             </ul>
-
     </section>
     <section class="right-article-section"></section>
     <section class="center-bottom-article-section">
         <ul>
             <li>
                 <span>
-                    <button type="submit" name="action" value="save" class="bottom-submit-buttons">Save</button>
+                    <button type="submit" name="action" value="save" class="bottom-submit-buttons">
+                        Save
+                    </button>
                 </span>
                 <span></span>
             </li>
