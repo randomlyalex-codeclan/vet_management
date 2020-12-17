@@ -12,66 +12,73 @@ import repositories.treatment_repository as treatment_repository
 
 # consol_setUp so I can use later ----
 
-test_vet_peter = Vet("Peter", False)
-test_vet_mark = Vet("Mark", False)
-test_vet_paul = Vet("Paul", False)
+test_vet_sam = Vet("Dr. Sam", False)
+test_vet_alison = Vet("Dr. Alison", False)
+test_vet_joe = Vet("Dr. Joe", False)
 
 
 test_owner_david = Owner("David", "Edinburgh", False)
-test_owner_carl = Owner("Carl", "liverpool", False)
+test_owner_peter = Owner("Peter Griffin", "Quahog", False)
 test_owner_jamie = Owner("Jamie", "Glasgow", False)
 test_owner_sarah = Owner("Sarah", "London", False)
 
 
-test_animal_pepper = Animal(
-    "Pepper", "10/11/2015", "Horse", test_owner_david, test_vet_paul, False)
-test_animal_luna = Animal(
-    "Luna", "01/03/2012", "Cat", test_owner_david, test_vet_mark, False)
-test_animal_buddy = Animal(
-    "Buddy", "19/01/2014", "Rabbit", test_owner_carl, test_vet_peter, False)
-test_animal_snowy = Animal(
-    "Snowy", "17/02/2015", "Dog", test_owner_carl, test_vet_peter, False)
-test_animal_lola = Animal(
-    "Lola", "04/08/2018", "Cow", test_owner_jamie, test_vet_peter, False)
+test_animal_big_bird = Animal(
+    "Big Bird", "10/11/2015", "Bird", test_owner_david, test_vet_sam, False)
+test_animal_earnie = Animal(
+    "Earnie ", "01/03/2012", "Giant Chicken", test_owner_david, test_vet_sam, False)
+test_animal_brian = Animal(
+    "Brian", "19/01/2014", "Dog", test_owner_peter, test_vet_joe, False)
+test_animal_evil_monkey = Animal(
+    "Evil Monkey", "17/02/2015", "Monkey", test_owner_jamie, test_vet_joe, False)
+test_animal_vinny = Animal(
+    "Vinny", "04/08/2018", "Dog", test_owner_jamie, test_vet_joe, False)
 test_animal_apollo = Animal(
-    "Apollo", "22/03/2016", "Dog", test_owner_jamie, test_vet_paul, False)
+    "Apollo", "22/03/2016", "Dog", test_owner_jamie, test_vet_sam, False)
 test_animal_buster = Animal(
-    "Buster", "29/04/2019", "Dog", test_owner_sarah, test_vet_paul, False)
+    "Buster", "29/04/2019", "Dog", test_owner_sarah, test_vet_sam, False)
 test_animal_izzy = Animal(
-    "Izzy", "30/05/2020", "Cat", test_owner_sarah, test_vet_mark, False)
+    "Izzy", "30/05/2020", "Cat", test_owner_sarah, test_vet_alison, False)
 
 test_treat_clipclaw = Treatment(1, 1, "15/06/2020", "Clipped claws", 5)
-test_treat_wormtabs = Treatment(1, 1, "01/02/2020", "Given worming tablets", 4)
-test_treat_checkup = Treatment(1, 1, "29/12/2019", "regular checkup", 3)
-test_treat_scan = Treatment(2, 1, "15/11/2019", "MRI scan", 10)
-
+test_treat_wormtabs = Treatment(2, 3, "01/02/2020", "Given worming tablets", 4)
+test_treat_checkup = Treatment(3, 3, "29/12/2019", "Regular checkup", 3)
+test_treat_4 = Treatment(4, 2, "15/11/2019", "Broken arm", 5)
+test_treat_5 = Treatment(4, 2, "15/11/2019", "Dental surgeries", 3)
+test_treat_6 = Treatment(4, 2, "15/11/2019", "Tooth Extraction", 8)
+test_treat_7 = Treatment(4, 1, "15/11/2019", "Neutering", 9)
+test_treat_8 = Treatment(4, 2, "15/11/2019", "Skin Surgeries", 6)
 # --------
 
 # save three 3 vets
-vet_repository.save(test_vet_peter)
-vet_repository.save(test_vet_mark)
-vet_repository.save(test_vet_paul)
+vet_repository.save(test_vet_sam)
+vet_repository.save(test_vet_joe)
+vet_repository.save(test_vet_alison)
 # save 4 owners
 owner_repository.save(test_owner_david)
-owner_repository.save(test_owner_carl)
+owner_repository.save(test_owner_peter)
 owner_repository.save(test_owner_jamie)
 owner_repository.save(test_owner_sarah)
 
 # save 7 animals
-animal_repository.save(test_animal_pepper)
-animal_repository.save(test_animal_luna)
-animal_repository.save(test_animal_snowy)
-animal_repository.save(test_animal_lola)
+animal_repository.save(test_animal_big_bird)
+animal_repository.save(test_animal_earnie)
+animal_repository.save(test_animal_brian)
+animal_repository.save(test_animal_evil_monkey)
 animal_repository.save(test_animal_buster)
 animal_repository.save(test_animal_izzy)
-animal_repository.save(test_animal_buddy)
+animal_repository.save(test_animal_vinny)
 animal_repository.save(test_animal_apollo)
 
 # create some treatments
 treatment_repository.save(test_treat_clipclaw)
 treatment_repository.save(test_treat_wormtabs)
 treatment_repository.save(test_treat_checkup)
-treatment_repository.save(test_treat_scan)
+treatment_repository.save(test_treat_4)
+treatment_repository.save(test_treat_5)
+treatment_repository.save(test_treat_6)
+treatment_repository.save(test_treat_7)
+treatment_repository.save(test_treat_8)
 
 # select all vets and print
 vets = vet_repository.select_all()

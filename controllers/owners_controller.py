@@ -60,8 +60,8 @@ def detail(action, id):
             return render_template("owners/detail.html.j2", owner=owner, len_animals=len_animals, animals=animals)
         elif action == "orphaned":
             animals = animal_repository.select_all_by_owner_id(1)
-            all_owners = owner_repository.select_all()
-            return render_template("owners/orphaned.html.j2", all_owners=all_owners, owner=owner, len_animals=len_animals, animals=animals)
+            active_owners = owner_repository.select_all_active()
+            return render_template("owners/orphaned.html.j2", active_owners=active_owners, owner=owner, len_animals=len_animals, animals=animals)
         else:
             message = "Malformed URL"
             return redirect(url_for("owners.index", message=message))

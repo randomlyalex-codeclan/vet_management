@@ -1,0 +1,81 @@
+{% extends '/index.html.j2' %}
+{% block content %}
+<article>
+    <section class="left-article-section">
+        <ul>
+
+        </ul>
+    </section>
+    <section class="right-article-section">
+        <!-- <ul>
+            {% for treatment in all_treatments %}
+            TID:{{treatment.id}}, VID:{{treatment.vet_id}}, AID:{{treatment.animal_id}}
+            <li> {{treatment.date}} - {{treatment.notes}} ({{treatment.weight}}Kg)</li>
+            {% endfor %}
+        </ul> -->
+
+        <form action="/treatments/new" method="POST">
+            <ul>
+                <li>
+                    <span>Vet: </span>
+                    <span>
+                        <select name="vet_id">
+                            {% for vet in active_vets %}
+                            <option value="{{ vet.id }}">
+                                {{ vet.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                </li>
+                <li>
+                    <span>Animal: </span>
+                    <span>
+                        <select name="animal_id">
+                            {% for animal in active_animals %}
+                            <option value="{{ animal.id }}">
+                                {{ animal.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </span>
+                </li>
+                <li>
+                    <span>Date: </span>
+                    <span>
+                        <input type="text" name="date" required>
+                    </span>
+                </li>
+                <li>
+                    <span>Notes: </span>
+                    <span>
+                        <textarea name="notes"rows="4" cols="30" required></textarea>
+                    </span>
+                </li>
+                <li>
+                    <span>Weight: </span>
+                    <span>
+                        <input type="text" name="weight" required>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <button type="submit" name="action" value="save">
+                            Save
+                        </button>
+                    </span>
+                    <span><button type="reset" value="discard">
+                            Reset
+                        </button>
+                    </span>
+                </li>
+            </ul>
+        </form>
+    </section>
+    <section class="center-bottom-article-section">
+        <ul>
+
+        </ul>
+    </section>
+</article>
+{% endblock content %}

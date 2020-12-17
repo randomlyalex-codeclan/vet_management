@@ -1,14 +1,16 @@
 {% extends 'owners/show.html.j2' %}
 {% block detail %}
 <ul>
+            
     {% for animal in animals %}
+    <form action="/animals/detail/edit/{{animal.id}}" method="POST">
     <li>
         <span>
             <a href="/animals/detail/show/{{animal.id}}">{{animal.name}}</a> 
         </span>
         <span>
             <select name="owner_id">
-                {% for owner in all_owners %}
+                {% for owner in active_owners %}
                 <option value="{{ owner.id }}" {% if owner.id == 1 %} selected {% endif %}>
                     {{ owner.name }}
                 </option>
@@ -17,6 +19,21 @@
             </span>
         </span>
     </li>
+    <li>
+                    <span>
+
+                    </span>
+                    <span>
+                        <input type="hidden" name="id" value={{animal.id}}>
+                        <input type="hidden" name="name" value={{animal.name}}>
+                        <input type="hidden" name="dob" value={{animal.dob}}>
+                        <input type="hidden" name="species" value={{animal.species}}>
+                        <input type="hidden" name="vet_id" value={{animal.vet.id}}>
+                        <button type="submit" name="action" value="save">Save</button>
+                    </span>
+                </li>
+                </form>
     {% endfor %}
+    
 </ul>
 {% endblock detail %}

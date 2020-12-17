@@ -32,3 +32,6 @@ CREATE TABLE treatments (
     weight int
 );
 
+-- create the orphan owner --
+INSERT INTO owners (name, address, deactivated)
+    VALUES ('No Owner', 'New and Orphaned animals', FALSE)

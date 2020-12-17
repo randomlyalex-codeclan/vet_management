@@ -27,7 +27,7 @@
                     <span>Vet: </span>
                     <span>
                         <select name="vet_id">
-                            {% for vet in vets %}
+                            {% for vet in active_vets %}
                             <option value="{{ vet.id }}">
                                 {{ vet.name }}
                             </option>

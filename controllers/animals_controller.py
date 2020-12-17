@@ -29,9 +29,9 @@ def index():
 
 @ animals_blueprint.route("/animals/new", methods=["POST", "GET"])
 def new():
-    vets = vet_repository.select_all()
+    active_vets = vet_repository.select_all_active()
     if request.method == 'GET':
-        return render_template("animals/new.html.j2", vets=vets)
+        return render_template("animals/new.html.j2", active_vets=active_vets)
     if request.method == 'POST':
         name = request.form['name']
         dob = request.form['dob']
@@ -63,8 +63,8 @@ def detail(action, id):
         if action == "show":
             return render_template("animals/show.html.j2", animal=animal, len_treatments=len_treatments)
         elif action == "edit":
-            vets = vet_repository.select_all()
-            return render_template("animals/edit.html.j2", animal=animal, vets=vets)
+            active_vets = vet_repository.select_all_active()
+            return render_template("animals/edit.html.j2", animal=animal, active_vets=active_vets)
         elif action == "treatments":
             treatments = treatment_repository.select_all_by_animal_id(id)
             return render_template("animals/detail.html.j2", animal=animal, len_treatments=len_treatments, treatments=treatments)

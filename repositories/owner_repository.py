@@ -9,9 +9,6 @@ from models.owner import Owner
 # C --------v
 
 def create_no_owner():
-    sql = "INSERT INTO owners (name, address, deactivated, id) VALUES (%s, %s, %s, %s)"
-    values = ["No Owner", "Holding space for orphaned and new Animals", False, 1]
-    run_sql(sql, values)
     sql = "UPDATE owners SET (name, address, deactivated) = (%s, %s, %s) WHERE id = %s"
     values = ["No Owner", "Holding space for orphaned and new Animals", False, 1]
     run_sql(sql, values)
