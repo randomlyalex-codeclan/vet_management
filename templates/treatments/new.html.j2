@@ -7,13 +7,6 @@
         </ul>
     </section>
     <section class="right-article-section">
-        <!-- <ul>
-            {% for treatment in all_treatments %}
-            TID:{{treatment.id}}, VID:{{treatment.vet_id}}, AID:{{treatment.animal_id}}
-            <li> {{treatment.date}} - {{treatment.notes}} ({{treatment.weight}}Kg)</li>
-            {% endfor %}
-        </ul> -->
-
         <form action="/treatments/new" method="POST">
             <ul>
                 <li>
@@ -49,7 +42,7 @@
                 <li>
                     <span>Notes: </span>
                     <span>
-                        <textarea name="notes"rows="4" cols="30" required></textarea>
+                        <textarea name="notes" rows="4" cols="30" required></textarea>
                     </span>
                 </li>
                 <li>

@@ -11,3 +11,4 @@ class Animal():
 
     def plot_weight(self):
         pass
+

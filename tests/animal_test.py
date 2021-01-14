@@ -48,9 +48,9 @@ class TestAnimal(unittest.TestCase):
         self.assertEqual("Dog", self.test_animal_buster.species)
 
     def test_animal_has_a__owner(self):
-        self.assertEqual("Roddy, Ireland", self.test_animal_pepper.owner)
-        self.assertEqual("Jen, Liverpool", self.test_animal_snowy.owner)
-        self.assertEqual("Sam, Newcastle", self.test_animal_buster.owner)
+        self.assertEqual("David", self.test_animal_pepper.owner.name)
+        self.assertEqual("Carl", self.test_animal_snowy.owner.name)
+        self.assertEqual("Sarah", self.test_animal_buster.owner.name)
 
     def test_animal_has_a__vet(self):
         self.assertEqual("Paul", self.test_animal_pepper.vet.name)

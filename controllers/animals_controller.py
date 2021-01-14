@@ -49,7 +49,7 @@ def new():
         if request.form['action'] == "finish":
             return redirect(url_for("animals.index", message=message))
         elif request.form['action'] == "continue":
-            return render_template("animals/new.html.j2", message=message, vets=vets)
+            return render_template("animals/new.html.j2", message=message, active_vets=active_vets)
     else:
         # POST Error 405 Method Not Allowed
         print("POST Error 405 Method Not Allowed")
