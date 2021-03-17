@@ -20,8 +20,7 @@
                         <input type="text" name="dob" value="{{animal.dob}} " required>
                     </span>
                 </li>
-                <li>
-                    <span>Species: </span>
+                <li> <span>Species: </span>
                     <span>
                         <input type="text" name="species" value="{{animal.species}}" required>
                     </span>
@@ -35,7 +34,7 @@
                     <span>
                         <select name="vet_id">
                             {% for vet in active_vets %}
-                            <option value="{{ vet.id }}" {% if vet.id == animal.vet.id %} selected {% endif %}>
+                            <option value="{{ vet.id }}" {% if vet.id==animal.vet.id %} selected {% endif %}>
                                 {{ vet.name }}
                             </option>
                             {% endfor %}
@@ -44,8 +43,8 @@
                 <li>
                     <span>Deactivate ? </span>
                     <span>
-                        <input type="checkbox" name="deactivated" value="True" {% if animal.deactivated == True %}
-                            checked {% endif %}>
+                        <input type="checkbox" name="deactivated" value="True" {% if animal.deactivated==True %} checked
+                            {% endif %}>
                     </span>
                 </li>
                 <input type="hidden" name="id" value={{animal.id}}>
